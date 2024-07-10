@@ -23,13 +23,13 @@ const Home = () => {
 
     try {
       const response = await axios.post(`${apiUrl}/auth/login`, data);
-      if (response.success) {
-        setToken(response.token);
-        localStorage.setItem("token", response.token);
+      if (response.data.success) {
+        setToken(response.data.token);
+        localStorage.setItem("token", response.data.token);
         navigate("/dashboard");
       } else {
         // Handle login failure
-        alert("Login failed: " + response.message);
+        alert("Login failed: " + response.data.message);
       }
     } catch (error) {
       console.error("Login error:", error);
