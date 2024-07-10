@@ -3,7 +3,7 @@ import React from "react";
 export const StoreContext = React.createContext(null);
 
 const StoreContextProvider = (props) => {
-  const apiUrl = "http://localhost:3000";
+  const apiUrl = "http://playground.tendaafrica.com";
   const [token, setToken] = React.useState("");
 
   const contextValue = {
