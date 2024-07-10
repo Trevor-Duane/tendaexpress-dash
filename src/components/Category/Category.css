@@ -1,0 +1,27 @@
+.category{
+    width: 70%;
+    margin-top: 10px;
+    color: #6d6d6d;
+    font-size: 16px
+}
+.category form{
+    gap: 20px;
+}
+.category-img-upload img{
+    width: 120px;
+}
+.category-name, .category-description{
+    width: max(40%, 280px);
+}
+.category-name input, .category-description textarea{
+    padding: 10px;
+}
+
+.category-btn{
+    max-width: 120px;
+    border: none;
+    padding: 10px;
+    background-color: #a020f0;
+    color: white;
+    cursor: pointer;
+}

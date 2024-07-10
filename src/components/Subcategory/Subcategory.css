@@ -1,0 +1,32 @@
+.subcategory{
+    width: 70%;
+    margin-top: 10px;
+    color: #6d6d6d;
+    font-size: 16px
+}
+.subcategory form{
+    gap: 20px;
+}
+
+.subcategory-name{
+    width: max(40%, 280px);
+}
+.subcategory-name input{
+    padding: 10px;
+}
+.subcategory-id{
+    display: flex;
+    gap: 30px;
+}
+.subcategory-id select, .subcategory-id input{
+    max-width: 120px;
+    padding: 10px;
+}
+.subcategory-btn{
+    max-width: 120px;
+    border: none;
+    padding: 10px;
+    background-color: #a020f0;
+    color: white;
+    cursor: pointer;
+}
