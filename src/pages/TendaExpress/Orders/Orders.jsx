@@ -2,14 +2,18 @@ import React from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "./Orders.css";
+import { StoreContext } from "../../../Context/StoreContext";
 import { assets } from "../../../assets/assets";
 
 
 const Orders = ({ url }) => {
   const [orders, setOrders] = React.useState([]);
+  const { apiUrl, setToken } = React.useContext(StoreContext);
 
   const fetchAllOrders = async () => {
-    const response = await axios.get(url + "/api/order/list");
+    const response = await axios.get(`${apiUrl}/api/orders`);
+
+    console.log("these are the orders", response.data.data)
     if (response.data.success) {
       setOrders(response.data.data);
     } else {
