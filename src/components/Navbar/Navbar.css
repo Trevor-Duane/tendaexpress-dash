@@ -1,49 +1,54 @@
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    background-color: rgb(43, 40, 40);
-    align-items: center;
-    padding: 8px 10px;
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(43, 40, 40);
+  align-items: center;
+  padding: 8px 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
 }
-.navbar .logo{
-    width: max(10%, 80px);
+.navbar .logo {
+  width: max(10%, 80px);
 }
-.navbar .profile{
-    width: 48px;
-    cursor: pointer;
+.navbar .profile {
+  width: 48px;
+  cursor: pointer;
 }
-.navbar .notification{
-    width: 24px;
-    cursor: pointer;
+.navbar .notification {
+  width: 24px;
+  cursor: pointer;
 }
-.navbar-right{
-    display: flex;
-    color: white;
-    align-items: center;
-    gap: 20px;
+.navbar-right {
+  display: flex;
+  color: white;
+  align-items: center;
+  gap: 20px;
 }
-.navbar-right p{
-    cursor: pointer;
+.navbar-right p {
+  cursor: pointer;
 }
-.navbar-link.active{
-    color: #e2c0f8;
+.navbar-link.active {
+  color: #e2c0f8;
 }
-.navbar-profile-details{
-    position: absolute;
-    background-color: #a020f0;
-    border-radius: 4px;
-    transition: 0.5s;
-    top: 7%;
-    right: 8px;
+.navbar-profile-details {
+  position: absolute;
+  background-color: #a020f0;
+  border-radius: 4px;
+  transition: 0.5s;
+  top: 7%;
+  right: 8px;
 }
-.navbar-profile-details ul{
-    list-style: none;
+.navbar-profile-details ul {
+  list-style: none;
 }
-.navbar-profile-details ul li{
-    padding: 10px 12px;
-    color: white;
-    border-bottom: 1px solid #e2c0f8;
+.navbar-profile-details ul li {
+  padding: 10px 12px;
+  color: white;
+  border-bottom: 1px solid #e2c0f8;
 }
-.navbar-profile-details ul li:hover{
-    color: #e2c0f8;
+.navbar-profile-details ul li:hover {
+  color: #e2c0f8;
 }
