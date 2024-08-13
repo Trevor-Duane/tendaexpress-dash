@@ -22,10 +22,10 @@ const Orders = ({ url }) => {
 
   const statusHandler = async (event, orderId) => {
     const response = await axios.post(`${apiUrl}/api/status`, {
-      orderId,
-      status: event.target.value,
+      id: orderId,
+      order_status: event.target.value,
     });
-    console.log(orderId)
+    console.log(orderId, (event.target.value))
     if (response.data.success) {
       await fetchAllOrders();
     }
