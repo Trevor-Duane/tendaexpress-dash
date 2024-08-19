@@ -10,15 +10,24 @@ const Orders = ({ url }) => {
   const { apiUrl, setToken } = React.useContext(StoreContext);
 
   const fetchAllOrders = async () => {
-    const response = await axios.get(`${apiUrl}/api/orders`);
+    try {
+      const response = await axios.get(`${apiUrl}/api/orders`);
 
     console.log("these are the orders", response.data.data);
     if (response.data.success) {
       setOrders(response.data.data);
     } else {
-      toast.error("Error");
+      toast.error("Error fetching orders");
+    }
+    } catch (error) {
+      toast.error(error)
     }
   };
+
+  React.useEffect(() => {
+    fetchAllOrders();
+  }, []);
+
 
   const statusHandler = async (event, orderId) => {
     const response = await axios.post(`${apiUrl}/api/status`, {
@@ -31,9 +40,7 @@ const Orders = ({ url }) => {
     }
   };
 
-  React.useEffect(() => {
-    fetchAllOrders();
-  }, []);
+ 
   return (
     <div className="content-page order">
       <h3>Order Page</h3>

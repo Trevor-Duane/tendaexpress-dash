@@ -3,7 +3,7 @@ import React from "react";
 export const StoreContext = React.createContext(null);
 
 const StoreContextProvider = (props) => {
-  const apiUrl = "http://api.tendaafrica.com";
+  const apiUrl = "http://api.tendacafe.com";
   const [token, setToken] = React.useState("");
 
   const contextValue = {
