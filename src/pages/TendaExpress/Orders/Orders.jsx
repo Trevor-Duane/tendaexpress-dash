@@ -10,18 +10,12 @@ const Orders = ({ url }) => {
   const { apiUrl, setToken } = React.useContext(StoreContext);
 
   const fetchAllOrders = async () => {
-    try {
-      // const response = await axios.get(`${apiUrl}/api/orders`);
-      const response = await axios.get(`${apiUrl}/api/orders`);
-
-    console.log("these are the orders", response.data.data);
+    const response = await axios.get(`${apiUrl}/api/orders`);
+    console.log(response.data.data);
     if (response.data.success) {
       setOrders(response.data.data);
     } else {
       toast.error("Error fetching orders");
-    }
-    } catch (error) {
-      toast.error(error)
     }
   };
 
