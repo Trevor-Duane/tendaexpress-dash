@@ -2,4 +2,4 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/jnoim0j52vif/public_html/express.tendacafe.com
-    - /bin/cp -R dist/. $DEPLOYPATH
+    - /bin/cp -R dist/ $DEPLOYPATH
