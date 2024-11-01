@@ -1,0 +1,93 @@
+
+.budget-form-controls{
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    padding: 4px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+    background-color: #e2c0f8;
+    justify-content: start;
+}
+.budget-wrapper{
+    /* background-color: slateblue; */
+}
+.budget-wrapper h3{
+    margin-top: 8px;
+}
+.selected-budget-items{
+    background-color: #ddd;
+    display: flex;
+    margin: 8px 0px;
+}
+.selected-budget-items p{
+    border-top: 1px solid #e2c0f8;
+    padding: 1rem;
+    margin: auto;
+}
+.budget-table-wrapper{
+    /* background-color: aquamarine; */
+}
+.budget-section-head{
+    background-color: #000;
+    margin-bottom: -12px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+}
+.budget-section-head h3{
+    padding: 4px;
+    color: #fff;
+}
+.budget-table-wrapper table{
+    /* background-color: yellow; */
+}
+
+.budget-table {
+  width: 100%;  /* Full width of container */
+  height: auto; /* Auto height (depends on content) */
+  border-collapse: collapse;  /* Remove space between cells */
+  margin: 20px 0;  /* Add some margin around the table */
+}
+
+/* Style for table rows */
+.budget-table tr {
+  height: 40px; /* Height of each row */
+}
+
+/* Style for table headers */
+.budget-table th {
+  /* background-color: #e6e4e4; / */
+  background-color: #F2F0EF; /* Background color of header */
+  color: black;  /* Text color */
+  padding: 8px;  /* Padding inside cells */
+  text-align: left;  /* Center text in header cells */
+  border: 1px solid #ddd;  /* Border for each header cell */
+}
+
+/* Style for table data cells */
+.budget-table td {
+  padding: 8px;  /* Padding inside cells */
+  border: 1px solid #ddd;  /* Border around cells */
+  text-align: left;  /* Left-align text in cells */
+  height: 40px;  /* Height of each data cell */
+}
+
+/* Optional: Add some hover effects */
+.budget-table tr:hover {
+  background-color: #f2f2f2;  
+}
+
+/* Optional: Zebra stripes effect */
+.budget-table tr:nth-child(even) {
+  background-color: #f9f9f9;  
+}
+.budget-table-wrapper #budget-total{
+
+}
+.budget-total-wrapper{
+    background-color: #f2f0ef;
+}
+.budget-total-wrapper h4{
+    padding: 4px;
+}
+.export-buttons {
+    margin-top: 10px;
+}

@@ -38,7 +38,7 @@ const Orders = ({ url }) => {
  
   return (
     <div className="content-page order">
-      <h3>Order Page</h3>
+      {/* ////// */}
       <div className="order-list">
         
         {orders.map((order, index) => {

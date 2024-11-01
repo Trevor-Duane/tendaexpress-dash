@@ -1,0 +1,72 @@
+.budgetDetailPageHeaderWrapper{
+  background-color: #edd9f9;
+  margin-bottom: 4px;
+}
+.budgetDetailPageHeaderWrapper h1{
+  padding: 4px 8px;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 20px !important;
+  color: #2b2828;
+}
+.budget-details-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+
+}
+.budget-details-details h2{
+  font-size: 16px !important;
+  
+}
+.status-draft {
+  color: black;
+  text-transform: capitalize;
+}
+.status-accepted{
+  color: orange;
+  text-transform: capitalize;
+}
+.status-acknowledged {
+  color: purple;
+  text-transform: capitalize;
+
+}
+.status-approved {
+  color: green;
+  text-transform: capitalize;
+}
+
+.status-rejected {
+  color: red;
+  text-transform: capitalize;
+
+}
+
+.budget_details_buttons{
+  display: flex;
+  align-items: center;
+}
+
+.section-header {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .budget-details-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .budget-details-table th,
+  .budget-details-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .budget-details-table th {
+    background-color: #e0e0e0;
+  }

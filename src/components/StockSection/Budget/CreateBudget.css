@@ -1,0 +1,222 @@
+.budget-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.budget-modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  width: 85%;
+  height: 85%;
+  overflow-y: scroll;
+  position: relative;
+}
+
+.budget-modal-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #a020f0; /* Blue background */
+  color: white; /* Text color for header */
+  padding: 10px;
+  /* border-top-left-radius: 10px; */
+  /* border-top-right-radius: 10px; */
+}
+.budget-modal-header h2 {
+  margin: 0;
+}
+.budget-details-row{
+  margin-top: 1rem;
+  display: flex;
+  gap: 8px;
+  /* justify-content: space-between; */
+  align-items: center;
+}
+.budget-detail-col{
+  flex: 1;
+}
+
+.budget-okay-button {
+  background: none;
+  border: none;
+  font-size: 14px;
+  color: white; /* Close button color */
+  cursor: pointer;
+}
+.budget-close-button {
+  background: none;
+  border: none;
+  font-size: 14px;
+  color: white; /* Close button color */
+  cursor: pointer;
+}
+
+.budget-modal-footer {
+  display: flex;
+  justify-content: space-between;
+  background-color: #f1f1f1; /* Light gray background */
+  padding: 10px;
+  /* border-bottom-left-radius: 10px; */
+  /* border-bottom-right-radius: 10px; */
+}
+
+.budget-modal-footer button {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.budget-modal-footer button[type="submit"] {
+  background-color: #a020f0; /* Green for submit button */
+  color: white; /* Text color for submit button */
+  border: none;
+  /* border-radius: 5px; */
+}
+
+.budget-modal-footer button[type="button"] {
+  background-color: #000000; /* Red for cancel button */
+  color: white; /* Text color for cancel button */
+  border: none;
+  /* border-radius: 5px; */
+}
+
+
+/* ////////////////Above is css for Budget-Modal//////////////////////// */
+
+.budget-form-controls{
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    padding: 4px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+    background-color: #e2c0f8;
+    justify-content: start;
+}
+.budget-wrapper{
+    /* background-color: slateblue; */
+}
+.budget-wrapper h3{
+    margin-top: 8px;
+}
+.selected-budget-items{
+    background-color: #ddd;
+    display: flex;
+    margin: 8px 0px;
+}
+.selected-budget-items p{
+    border-top: 1px solid #e2c0f8;
+    padding: 1rem;
+    margin: auto;
+}
+.budget-table-wrapper{
+    /* background-color: aquamarine; */
+}
+.budget-section-head{
+    background-color: #000;
+    margin-bottom: -12px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+}
+.budget-section-head h3{
+    padding: 4px;
+    color: #fff;
+}
+.budget-table-wrapper table{
+    /* background-color: yellow; */
+}
+
+
+
+
+
+
+.budget-table {
+  width: 100%;  /* Full width of container */
+  height: auto; /* Auto height (depends on content) */
+  border-collapse: collapse;  /* Remove space between cells */
+  margin: 20px 0;  /* Add some margin around the table */
+}
+
+/* Style for table rows */
+.budget-table tr {
+  height: 40px; /* Height of each row */
+}
+
+/* Style for table headers */
+.budget-table th {
+  /* background-color: #e6e4e4; / */
+  background-color: #F2F0EF; /* Background color of header */
+  color: black;  /* Text color */
+  padding: 8px;  /* Padding inside cells */
+  text-align: left;  /* Center text in header cells */
+  border: 1px solid #ddd;  /* Border for each header cell */
+}
+
+/* Style for table data cells */
+.budget-table td {
+  padding: 8px;  /* Padding inside cells */
+  border: 1px solid #ddd;  /* Border around cells */
+  text-align: left;  /* Left-align text in cells */
+  height: 40px;  /* Height of each data cell */
+}
+
+/* Optional: Add some hover effects */
+.budget-table tr:hover {
+  background-color: #f2f2f2;  
+}
+
+/* Optional: Zebra stripes effect */
+.budget-table tr:nth-child(even) {
+  background-color: #f9f9f9;  
+}
+.budget-table-wrapper #budget-total{
+
+}
+.budget-total-wrapper{
+    background-color: #f2f0ef;
+}
+.budget-total-wrapper h4{
+    padding: 4px;
+}
+.export-buttons {
+    margin-top: 10px;
+}
+
+
+
+.custom-dropdown {
+  position: relative;
+  display: inline-block;
+  background-color: red;
+}
+
+.dropdown-toggle {
+  padding: 8px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  z-index: 1000;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.dropdown-item {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background-color: #f0f0f0;
+}

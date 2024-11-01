@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 *{
-  font-family: "Lato", sans-serif;
   padding: 0;
   margin: 0;
+  font-size: 12px !important;
+  font-family: 'Lato';
+  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important; */
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
@@ -25,4 +27,10 @@ a{
 }
 .content-page{
   padding: 4px 10px;
+}
+.mycustom-select{
+  height: 37px;
+  border: 1px solid #a9a9a9;
+  padding: 10px;
+  width: 100%;
 }

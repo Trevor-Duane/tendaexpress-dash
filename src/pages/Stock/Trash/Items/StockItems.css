@@ -1,0 +1,13 @@
+.card {
+    background: var(--surface-card);
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+.stock-search-buttons{
+    display: flex;
+    justify-content: space-between;
+}
+/* .stock-search{
+    flex: 1;
+} */

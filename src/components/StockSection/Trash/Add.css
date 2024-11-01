@@ -1,0 +1,96 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  width: 400px;
+  position: relative;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #a020f0; /* Blue background */
+  color: white; /* Text color for header */
+  padding: 10px;
+  /* border-top-left-radius: 10px; */
+  /* border-top-right-radius: 10px; */
+}
+
+.modal-header h2 {
+  margin: 0;
+}
+
+.okay-button {
+  background: none;
+  border: none;
+  font-size: 14px;
+  color: white; /* Close button color */
+  cursor: pointer;
+}
+.close-button {
+  background: none;
+  border: none;
+  font-size: 14px;
+  color: white; /* Close button color */
+  cursor: pointer;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: space-between;
+  background-color: #f1f1f1; /* Light gray background */
+  padding: 10px;
+  /* border-bottom-left-radius: 10px; */
+  /* border-bottom-right-radius: 10px; */
+}
+
+.modal-footer button {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.modal-footer button[type="submit"] {
+  background-color: #a020f0; /* Green for submit button */
+  color: white; /* Text color for submit button */
+  border: none;
+  /* border-radius: 5px; */
+}
+
+.modal-footer button[type="button"] {
+  background-color: #000000; /* Red for cancel button */
+  color: white; /* Text color for cancel button */
+  border: none;
+  /* border-radius: 5px; */
+}
+.inventoryFormRow {
+  display: flex;
+  width: 100%;
+  margin-top: 6px;
+  margin-bottom: 6px;
+  gap: 4px;
+}
+.inventoryFormCol {
+  flex: 1;
+}
+.inventory-edit-select {
+  border: 1px solid #a9a9a9;
+  padding: 10px;
+  width: 100%;
+  margin-top: 10px;
+}
+/* .transfer-label, .modal-content{
+  padding-top: 12px;
+} */

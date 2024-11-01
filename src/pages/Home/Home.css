@@ -76,13 +76,15 @@
     padding: 10px;
     border-radius: 4px;
     color: white;
-    background-color: rgb(43, 40, 40);
+    /* background-color: rgb(43, 40, 40); */
+    background-color: #a020f0;
     font-size: 15px;
     cursor: pointer;
 }
 .login-inputs input::placeholder {
-    color: #a020f0;
-    font-weight: 600;
+    /* color: #a020f0; */
+    color: rgb(43, 40, 40);;
+    font-weight: 400;
     font-size: 14px;
 }
 .account-request{
@@ -99,3 +101,31 @@
     font-weight: 400;
     cursor: pointer;
 }
+
+
+
+
+
+
+
+
+
+
+
+.password-input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .password-input-container input {
+    flex: 1;
+  }
+  
+  .password-icon {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    color: #666;
+  }
+  

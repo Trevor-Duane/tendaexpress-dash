@@ -3,18 +3,24 @@ import { assets } from "../../assets/assets";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Circles } from "react-loader-spinner";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "./Home.css";
-import { StoreContext } from "../../Context/StoreContext";
+import { StoreContext } from "../../Context/StoreContext"; // Import your context
 
 const Home = () => {
   const navigate = useNavigate();
-  const { apiUrl, setToken } = useContext(StoreContext);
+  const { apiUrl, setToken, setUser } = useContext(StoreContext); // Get context values
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState({ email: "", password: "" });
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   const onChangeHandler = (event) => {
     const { name, value } = event.target;
     setData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  const togglePasswordVisibility = () => {
+    setIsPasswordVisible((prevState) => !prevState);
   };
 
   const handleLogin = async (e) => {
@@ -26,9 +32,13 @@ const Home = () => {
       if (response.data.success) {
         setToken(response.data.token);
         localStorage.setItem("token", response.data.token);
+
+        // Save user info (including permissions)
+        setUser(response.data.user); 
+        localStorage.setItem("userInfo", JSON.stringify(response.data.user))
+
         navigate("/dashboard");
       } else {
-        // Handle login failure
         alert("Login failed: " + response.data.message);
       }
     } catch (error) {
@@ -57,14 +67,19 @@ const Home = () => {
                 placeholder="Your email"
                 required
               />
-              <input
-                type="password"
-                name="password"
-                value={data.password}
-                onChange={onChangeHandler}
-                placeholder="Password"
-                required
-              />
+              <div className="password-input-container">
+                <input
+                  type={isPasswordVisible ? "text" : "password"}
+                  name="password"
+                  value={data.password}
+                  onChange={onChangeHandler}
+                  placeholder="Password"
+                  required
+                />
+                <span onClick={togglePasswordVisibility} className="password-icon">
+                  {isPasswordVisible ? <FaEyeSlash /> : <FaEye />}
+                </span>
+              </div>
             </div>
 
             <div className="forgot-password">
@@ -91,8 +106,6 @@ const Home = () => {
           width="80"
           color="#a020f0"
           ariaLabel="circles-loading"
-          wrapperStyle={{}}
-          wrapperClass=""
           visible={true}
         />
       )}

@@ -1,0 +1,18 @@
+.recipe-card-header{
+    background-color: rgba(128, 131, 128, 0.24);
+}
+.recipe-card-header h3{
+    padding: 10px 4px;
+}
+.recipe-card-list{
+    margin-top: 6px;
+    line-height: 20px;
+}
+.recipe-card-list li{
+    margin-top: 6px;
+}
+.spacing-div{
+    margin: 2px 0px;
+    background-color: #e2c0f8;
+    height: 1px;
+}

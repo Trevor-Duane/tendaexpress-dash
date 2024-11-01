@@ -1,0 +1,120 @@
+.dashboard-header{
+    margin-bottom: 2rem;
+}
+.dashboard-head{
+    color: #e2c0f8;
+    font-size: 1.4rem;
+    margin-top: -1rem;
+    padding-bottom: .3rem;
+}
+.dashboard-date{
+    font-size: 12px;
+}
+.top-row{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 250px;
+    column-gap: 20px;
+}
+/* .grid-column{
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+} */
+.left-column{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-columns: auto auto;
+    gap: 10px;
+}
+.bold-para{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.inner-grid-column{
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+
+}
+.middle-column{
+    border-radius: 6px;
+    padding: 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+
+}
+.right-column{
+    padding: 1rem 1rem;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+
+}
+
+
+.current-orders{
+    height: 300px;
+    margin: 15px 0px;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+.current-orders-header{
+    padding: 1rem 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.current-order-container{
+    display: flex;
+    padding: 2px 1rem;
+    width: 100%;
+    height: 100px;
+    justify-content: space-between;
+    align-items: center;
+}
+.flex-container-1{
+    display: flex;
+    flex: 1;
+    align-items: center;
+    gap: 10px;
+}
+.flex-container-2{
+    border-left: 1px solid #ccc;
+    display: flex;
+    padding-left: 1rem;
+    flex: 1;
+    align-items: center;
+    /* justify-content: center; */
+}
+.flex-container-span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+.flex-container-3{
+    border-left: 1px solid #ccc;
+    padding-left: 1rem;
+    display: flex;
+    flex: 1;
+    align-items: center;
+    /* justify-content: center; */
+}
+.flex-container-4{
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+}
+.flex-container-4 button{
+    background-color: #e2c0f8;
+    border: 1px solid #e2c0f8;
+    padding: 4px 14px;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 4px;
+}

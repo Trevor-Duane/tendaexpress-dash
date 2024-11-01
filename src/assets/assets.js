@@ -13,6 +13,9 @@ import motorbike_white from './motorbike_white.png'
 import inventory_white from './inventory_white.png'
 import menu_white from './menu_white.png'
 import sales_white from './sales_white.png'
+import pending from './pending.png'
+import dish from './dish.png'
+import paid from './paid.png'
 
 
 
@@ -31,5 +34,8 @@ export const assets = {
     motorbike_white,
     inventory_white,
     menu_white,
-    sales_white
+    sales_white,
+    pending,
+    paid,
+    dish
 }
