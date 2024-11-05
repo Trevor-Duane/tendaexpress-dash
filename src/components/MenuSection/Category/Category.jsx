@@ -6,41 +6,44 @@ import { toast } from "react-toastify";
 import { StoreContext } from "../../../Context/StoreContext";
 
 const Category = () => {
-
-  const { apiUrl, setToken } = React.useContext(StoreContext);
-
-  const [image, setImage] = React.useState(false);
+  const { apiUrl } = React.useContext(StoreContext);
+  const [image, setImage] = React.useState(null);
   const [data, setData] = React.useState({
     category_name: "",
     category_description: "",
   });
 
   const onChangeHandler = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
-
-    setData((data) => ({ ...data, [name]: value }));
+    const { name, value } = event.target;
+    setData((prevData) => ({ ...prevData, [name]: value }));
   };
+
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("category_name", data.category_name);
     formData.append("category_description", data.category_description);
-    formData.append("category_image", image);
+    if (image) formData.append("category_image", image);
 
-    const response = await axios.post(`${apiUrl}/api/add-category`, formData);
-
-    if (response.data.success) {
-      setData({
-        category_name: "",
-        category_description: "",
-      });
-      setImage(false)
-      toast.success(response.data.message)
-    } else {
-        toast.error(response.data.message)
+    try {
+      const response = await axios.post(`${apiUrl}/api/add-category`, formData);
+      
+      if (response.data.success) {
+        setData({
+          category_name: "",
+          category_description: "",
+        });
+        setImage(null);
+        toast.success(response.data.message);
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error) {
+      console.error("Error while creating category:", error);
+      toast.error("An error occurred while creating the category.");
     }
   };
+
   return (
     <div className="category content-page">
       <form className="flex-col" onSubmit={onSubmitHandler}>
@@ -49,7 +52,7 @@ const Category = () => {
           <label htmlFor="image">
             <img
               src={image ? URL.createObjectURL(image) : assets.upload_area}
-              alt=""
+              alt="Upload Area"
             />
           </label>
           <input
@@ -69,6 +72,7 @@ const Category = () => {
             type="text"
             name="category_name"
             placeholder="Type here"
+            required
           />
         </div>
 
@@ -84,7 +88,6 @@ const Category = () => {
           ></textarea>
         </div>
 
-       
         <button type="submit" className="category-btn">
           Create Category
         </button>

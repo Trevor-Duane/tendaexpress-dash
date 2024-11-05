@@ -3,7 +3,9 @@ import React, { useState, useEffect } from "react";
 export const StoreContext = React.createContext(null);
 
 const StoreContextProvider = (props) => {
-  const apiUrl = "http://localhost:3000"; 
+  const apiUrl = "https://lionfish-many-wildly.ngrok-free.app";
+  // const apiUrl = "http://45.9.191.61:3000";
+  
   const [token, setToken] = useState("");
   const [user, setUser] = useState(null); 
 
