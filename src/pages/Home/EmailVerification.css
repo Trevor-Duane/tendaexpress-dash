@@ -1,0 +1,57 @@
+/* EmailVerification.css */
+
+.verification-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #663399;
+    color: #fff;
+    font-family: Arial, sans-serif;
+  }
+  
+  .verification-page h2 {
+    font-size: 24px;
+    color: #000;
+    margin-bottom: 10px;
+  }
+  
+  .verification-page p {
+    font-size: 16px;
+    color: #f0f0f0;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .verification-page input[type="text"] {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    border: 2px solid #000;
+    border-radius: 5px;
+    outline: none;
+    color: #663399;
+  }
+  
+  .verification-page input[type="text"]::placeholder {
+    color: #ccc;
+  }
+  
+  .verification-page button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .verification-page button:hover {
+    background-color: #333;
+  }
+  

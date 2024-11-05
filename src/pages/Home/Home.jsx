@@ -48,6 +48,9 @@ const Home = () => {
       setIsLoading(false);
     }
   };
+  const handleAccountRequestClick = () => {
+    navigate("/account_request"); // Navigate to the account request page
+  };
 
   return (
     <div className="login-page home">
@@ -96,7 +99,10 @@ const Home = () => {
           <div className="account-request">
             <p>
               Don't have an account?
-              <br /> <span>Request Account</span>
+              <br />
+              <span onClick={handleAccountRequestClick} style={{ cursor: "pointer", color: "#663399" }}>
+                Request Account
+              </span>
             </p>
           </div>
         </div>

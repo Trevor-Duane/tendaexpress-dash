@@ -15,11 +15,15 @@ import Profile from "./pages/Dashboard/Profile/Profile";
 import Store from "./pages/Stock/Store/Store.jsx";
 import Budgets from "./pages/Stock/Budget/Budgets";
 import ShoppingList from "./pages/Stock/Shoplist/ShoppingList";
+import AccountRequest from "./pages/Home/AccountRequest.jsx";
+import EmailVerification from "./pages/Home/EmailVerification.jsx";
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/account_request" element={<AccountRequest/>}/>
+      <Route path="/email_verification" element={<EmailVerification/>}/>
       <Route element={<Sidebar />}>
         {/* dashboard */}
         <Route path="/dashboard" element={<Dashboard />} />
