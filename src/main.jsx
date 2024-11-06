@@ -4,11 +4,16 @@ import App from "./App.jsx";
 import "./index.css";
 import { BrowserRouter } from "react-router-dom";
 import StoreContextProvider from "./Context/StoreContext.jsx";
+import ErrorBoundary from "./ErrorBoundary.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <BrowserRouter>
+  <React.StrictMode>
     <StoreContextProvider>
-        <App />
+      <BrowserRouter>
+        <ErrorBoundary>
+          <App />
+        </ErrorBoundary>
+      </BrowserRouter>
     </StoreContextProvider>
-  </BrowserRouter>
+  </React.StrictMode>
 );

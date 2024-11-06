@@ -2,35 +2,47 @@ import React, { useState, useEffect } from "react";
 
 export const StoreContext = React.createContext(null);
 
-const StoreContextProvider = (props) => {
-  const apiUrl = "https://lionfish-many-wildly.ngrok-free.app";
-  // const apiUrl = "http://45.9.191.61:3000";
-  
-  const [token, setToken] = useState("");
-  const [user, setUser] = useState(null); 
+const StoreContextProvider = ({ children }) => {
+  const apiUrl = import.meta.env.VITE_API_URL;
 
-  // Optional: Load user data from local storage on app start
+  const [token, setToken] = useState("");
+  const [user, setUser] = useState(null);
+
+  // Load initial token and user info from localStorage on app start
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
-    const storedUserInfo = localStorage.getItem("userInfo")
+    const storedUserInfo = localStorage.getItem("userInfo");
     if (storedToken && storedUserInfo) {
       setToken(storedToken);
-      setUser(JSON.parse(storedUserInfo))
-      // Optionally fetch user data here if necessary
+      setUser(JSON.parse(storedUserInfo));
     }
   }, []);
+
+  // Save token and user info to localStorage when they change
+  useEffect(() => {
+    if (token) {
+      localStorage.setItem("token", token);
+    } else {
+      localStorage.removeItem("token");
+    }
+    if (user) {
+      localStorage.setItem("userInfo", JSON.stringify(user));
+    } else {
+      localStorage.removeItem("userInfo");
+    }
+  }, [token, user]);
 
   const contextValue = {
     apiUrl,
     token,
     setToken,
-    user, // Add user to context value
-    setUser, // Function to set user data
+    user,
+    setUser,
   };
 
   return (
     <StoreContext.Provider value={contextValue}>
-      {props.children}
+      {children}
     </StoreContext.Provider>
   );
 };

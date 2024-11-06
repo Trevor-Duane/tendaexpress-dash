@@ -7,6 +7,8 @@ import { StoreContext } from "../../../Context/StoreContext";
 const Subcategory = () => {
 
   const {apiUrl} = React.useContext(StoreContext);
+
+  console.log("env", apiUrl)
   const [categories, setCategories] = React.useState([])
 
   const [data, setData] = React.useState({
