@@ -19,11 +19,11 @@ const CreateAddendum = ({ onClose }) => {
   const [totals, setTotals] = useState({});
   const [itemQuantity, setItemQuantity] = useState(1);
   const [selectedItemId, setSelectedItemId] = useState("");
-  const [budgetTitle, setBudgetTitle] = useState("");
+  // const [budgetTitle, setBudgetTitle] = useState("");////
   const [date, setDate] = useState("");
-  const [reason, setReason] = useState("");
+  const [remark, setRemark] = useState("");
 
-  const { user, token } = useContext(StoreContext)
+  const { user, token, apiUrl } = useContext(StoreContext)
   console.log("this is a create budget user", token)
 
 
@@ -31,7 +31,7 @@ const CreateAddendum = ({ onClose }) => {
     // Fetch existing budgets
     const fetchBudgets = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/api/budgets");
+        const response = await axios.get(`${apiUrl}/api/budgets`);
         setBudgets(response.data.data || []);
       } catch (error) {
         console.error("Error fetching budgets:", error);
@@ -44,7 +44,7 @@ const CreateAddendum = ({ onClose }) => {
     const fetchInventoryItems = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/api/list_shopping_items"
+          `${apiUrl}/api/list_shopping_items`
         );
         const items = Array.isArray(response.data.data)
           ? response.data.data
@@ -158,24 +158,25 @@ const CreateAddendum = ({ onClose }) => {
       );
       //create a new budget in the budgets table
       const budgetResponse = await axios.post(
-        "http://localhost:3000/api/create_addendum_budget",
+        `${apiUrl}/api/create_addendum_budget`,
         {
-          budget_head: budgetTitle,
+          
+          budget_id: selectedItemId,
+          remarks: remark,
           date: date,
-          budget_total: totalAmount,
+          addendum_amount: totalAmount,
           created_by: user.username,
-          reason: reason,
         }
       );
 
       // Get the newly created budget ID
-      console.log("this should be the id of the budget", budgetResponse)
-      const budgetId = budgetResponse.data.budget;
+      // console.log("this should be the id of the budget", budgetResponse)
+      // const budgetId = budgetResponse.data.budget;
 
       // Prepare data for the `budget_details` table
       const budgetDetails = Object.keys(selectedItems).flatMap((section) =>
         selectedItems[section].map((item) => ({
-          budget_id: budgetId,
+          budget_id: selectedItemId,
           item_name: item.item_name,
           uom: item.uom,
           quantity: item.quantity,
@@ -186,7 +187,7 @@ const CreateAddendum = ({ onClose }) => {
       );
 
       // Insert items into the `budget_details` table
-      await axios.post("http://localhost:3000/api/create_budget_details", {
+      await axios.post(`${apiUrl}/api/create_budget_details`, {
         details: budgetDetails,
       });
 
@@ -199,18 +200,18 @@ const CreateAddendum = ({ onClose }) => {
   };
 
   return (
-    <div className="budget-modal-content">
+    <div className="addendum-budget-modal-content">
       <div className="budget-modal-header">
         <h2>Create Addendum Budget</h2>
       </div>
-      <div className="budget-details-row">
+      <div className="addendum-budget-details-row">
         <div className="budget-detail-col">
         <select
-            className="mycustom-select"
+            className="addendum-budget-select"
             onChange={handleItemSelect}
             value={selectedItemId}
           >
-            <option value   ="">Select an item</option>
+            <option value="">Select an item</option>
             {budgets.map((budget) => (
               <option key={budget.id} value={budget.id}>
                 {budget.budget_head} (From {budget.from_date} to {budget.to_date})
@@ -219,14 +220,16 @@ const CreateAddendum = ({ onClose }) => {
           </select>
           
         </div>
-        <div className="budget-detail-col">
+      
+        <div className="addendum-budget-detail-col">
           <InputField
             type="text"
-            placeholder="Enter budget title"
-            value={budgetTitle}
-            onChange={(e) => setBudgetTitle(e.target.value)}
+            placeholder="Remark"
+            value={remark}
+            onChange={(e) => setRemark(e.target.value)}
           />
         </div>
+
         <div className="budget-detail-col">
           <InputField
             type="date"
@@ -235,19 +238,12 @@ const CreateAddendum = ({ onClose }) => {
             onChange={(e) => setDate(e.target.value)}
           />
         </div>
-        <div className="budget-detail-col">
-          <InputField
-            type="text"
-            placeholder="reason"
-            value={reason}
-            onChange={(e) => setReason(e.target.value)}
-          />
-        </div>
+        
       </div>
-      <div className="budget-form-controls">
+      <div className="addendum-budget-form-controls">
         <div>
           <select
-            className="inventory-edit-select"
+            className="addendum-budget-select"
             onChange={handleItemSelect}
             value={selectedItemId}
           >
@@ -272,7 +268,7 @@ const CreateAddendum = ({ onClose }) => {
           <InputButton onClick={addItemToBudget}>Add to Budget</InputButton>
         </div>
       </div>
-      <div className="budget-wrapper">
+      <div className="addendum-budget-wrapper">
         {/* <h3>Selected Items</h3> */}
         {Object.keys(selectedItems).length === 0 ? (
           <div className="selected-budget-items">
@@ -280,7 +276,7 @@ const CreateAddendum = ({ onClose }) => {
           </div>
         ) : (
           Object.keys(selectedItems).map((section) => (
-            <div className="budget-table-wrapper" key={section}>
+            <div className="addendum-budget-table-wrapper" key={section}>
               <div className="budget-section-head">
                 <h3>{section} Items</h3>
               </div>

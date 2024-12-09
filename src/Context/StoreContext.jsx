@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate, useNavigation } from "react-router-dom";
 
 export const StoreContext = React.createContext(null);
 
@@ -32,12 +33,21 @@ const StoreContextProvider = ({ children }) => {
     }
   }, [token, user]);
 
+  // Logout function to clear token and user data
+  const logout = () => {
+    setToken("");
+    setUser(null);
+    localStorage.removeItem("token");
+    localStorage.removeItem("userInfo");
+  };
+
   const contextValue = {
     apiUrl,
     token,
     setToken,
     user,
     setUser,
+    logout,  // Expose the logout functionssss
   };
 
   return (

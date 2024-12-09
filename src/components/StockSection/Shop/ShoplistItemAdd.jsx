@@ -3,6 +3,7 @@ import axios from "axios";
 import "./Add.css";
 import { AiOutlineClose } from "react-icons/ai";
 import { InputField } from "../../Form/FormComponents";
+import { StoreContext } from "../../../Context/StoreContext";
 
 const ShoplistItemAdd = ({ onClose, refetchShopItems }) => {
   const [formData, setFormData] = useState({
@@ -11,6 +12,7 @@ const ShoplistItemAdd = ({ onClose, refetchShopItems }) => {
     uom: "",
     unit_price: "",
   });
+  const { apiUrl } = React.useContext(StoreContext)
 
   // Handle form input change
   const handleChange = (e) => {
@@ -26,7 +28,7 @@ const ShoplistItemAdd = ({ onClose, refetchShopItems }) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/add_shoplist_item",
+        `${apiUrl}/api/add_shoplist_item`,
         formData
       );
       console.log("Form Submitted Successfully:", response.data);

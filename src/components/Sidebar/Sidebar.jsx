@@ -21,7 +21,7 @@ const Sidebar = () => {
                 <h4>Main Dashboard</h4>
               </div>
               <div>
-                <NavLink to="/dashboard" className="sidebar-option">
+                <NavLink to="/" className="sidebar-option">
                   <p>Dashboard</p>
                 </NavLink>
 
@@ -41,10 +41,10 @@ const Sidebar = () => {
                 <img src={assets.menu_white} alt="" />
                 <h4>Menu Management</h4>
               </div>
-              <NavLink to="/add" className="sidebar-option">
+              <NavLink to="menu/add" className="sidebar-option">
                 <p>Add Items</p>
               </NavLink>
-              <NavLink to="/list" className="sidebar-option">
+              <NavLink to="menu/list" className="sidebar-option">
                 <p>Menu Items</p>
               </NavLink>
               {/* <NavLink to="/item_recipes" className="sidebar-option">
@@ -59,15 +59,15 @@ const Sidebar = () => {
                 <img src={assets.inventory_white} alt="" />
                 <h4>Stock and Inventory</h4>
               </div>
-              <NavLink to="/shopping_list" className="sidebar-option">
+              <NavLink to="stock/shopping_list" className="sidebar-option">
                 <p>Shopping List</p>
               </NavLink>
 
-              <NavLink to="/inventory_in_store" className="sidebar-option">
+              <NavLink to="stock/inventory_in_store" className="sidebar-option">
                 <p>Store Management</p>
               </NavLink>
 
-              <NavLink to="/budgets" className="sidebar-option">
+              <NavLink to="stock/budgets" className="sidebar-option">
                 <p>Budget Management</p>
               </NavLink>
 
@@ -90,16 +90,16 @@ const Sidebar = () => {
                 <img src={assets.motorbike_white} alt="" />
                 <h4>Tenda Express</h4>
               </div>
-              <NavLink to="/orders" className="sidebar-option">
+              <NavLink to="tenda_express/orders" className="sidebar-option">
                 <p>Orders</p>
               </NavLink>
-              <NavLink to="/feedbacks" className="sidebar-option">
+              <NavLink to="tenda_express/feedbacks" className="sidebar-option">
                 <p>Feedbacks</p>
               </NavLink>
-              <NavLink to="/promos" className="sidebar-option">
+              <NavLink to="tenda_express/promos" className="sidebar-option">
                 <p>Promos</p>
               </NavLink>
-              <NavLink to="/users" className="sidebar-option">
+              <NavLink to="tenda_express/users" className="sidebar-option">
                 <p>App Users</p>
               </NavLink>
             </div>
@@ -110,11 +110,11 @@ const Sidebar = () => {
                 <img src={assets.sales_white} alt="" />
                 <h4>Sales and Reports</h4>
               </div>
-              <NavLink to="" className="sidebar-option">
+              <NavLink to="reports" className="sidebar-option">
                 <p>Items</p>
               </NavLink>
 
-              <NavLink to="" className="sidebar-option">
+              <NavLink to="settings" className="sidebar-option">
                 <p>Sales Link</p>
               </NavLink>
             </div>

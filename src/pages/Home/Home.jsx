@@ -1,11 +1,11 @@
 import React, { useState, useContext } from "react";
-import { assets } from "../../assets/assets";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Circles } from "react-loader-spinner";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { StoreContext } from "../../Context/StoreContext"; 
+import { assets } from "../../assets/assets"; // Import your assets
 import "./Home.css";
-import { StoreContext } from "../../Context/StoreContext"; // Import your context
 
 const Home = () => {
   const navigate = useNavigate();
@@ -29,15 +29,17 @@ const Home = () => {
 
     try {
       const response = await axios.post(`${apiUrl}/auth/login`, data);
+
+      console.log("login home page data", response.data)
+
       if (response.data.success) {
         setToken(response.data.token);
-        localStorage.setItem("token", response.data.token);
+        // localStorage.setItem("token", response.data.token);
 
-        // Save user info (including permissions)
-        setUser(response.data.user); 
-        localStorage.setItem("userInfo", JSON.stringify(response.data.user))
+        setUser(response.data.user);
+        // localStorage.setItem("userInfo", JSON.stringify(response.data.user));
 
-        navigate("/dashboard");
+        // navigate("/"); // Redirect to dashboard after successful login
       } else {
         alert("Login failed: " + response.data.message);
       }
@@ -48,6 +50,7 @@ const Home = () => {
       setIsLoading(false);
     }
   };
+
   const handleAccountRequestClick = () => {
     navigate("/account_request"); // Navigate to the account request page
   };
@@ -80,7 +83,7 @@ const Home = () => {
                   required
                 />
                 <span onClick={togglePasswordVisibility} className="password-icon">
-                  {isPasswordVisible ? <FaEyeSlash /> : <FaEye />}
+                  {isPasswordVisible ? <FaEye /> : <FaEyeSlash />}
                 </span>
               </div>
             </div>
@@ -100,7 +103,10 @@ const Home = () => {
             <p>
               Don't have an account?
               <br />
-              <span onClick={handleAccountRequestClick} style={{ cursor: "pointer", color: "#663399" }}>
+              <span
+                onClick={handleAccountRequestClick}
+                style={{ cursor: "pointer", color: "#663399" }}
+              >
                 Request Account
               </span>
             </p>

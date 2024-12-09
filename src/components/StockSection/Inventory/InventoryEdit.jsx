@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { InputField } from "../../Form/FormComponents";
+import { StoreContext } from "../../../Context/StoreContext";
 
 const InventoryEdit = ({ inventoryItems, onClose, refetchStore }) => {
   const [selectedItem, setSelectedItem] = useState(null);
@@ -11,6 +12,8 @@ const InventoryEdit = ({ inventoryItems, onClose, refetchStore }) => {
     unit_price: "",
     tags: "",
   });
+
+  const { apiUrl } = React.useContext(StoreContext)
   
 
   // Populate form when item is selected from the dropdown
@@ -41,7 +44,7 @@ const InventoryEdit = ({ inventoryItems, onClose, refetchStore }) => {
     try {
       if (selectedItem) {
         const response = await axios.put(
-          `http://localhost:3000/api/update_inventory/${selectedItem.id}`,
+          `${apiUrl}/api/update_inventory/${selectedItem.id}`,
           formData
         );
         console.log("Item updated successfully:", response.data);
@@ -63,7 +66,7 @@ const InventoryEdit = ({ inventoryItems, onClose, refetchStore }) => {
         <option value="">Select an item to edit</option>
         {inventoryItems.map((item) => (
           <option key={item.id} value={item.id}>
-            {item.inventory_item}
+            {item.item_name}
           </option>
         ))}
       </select>

@@ -3,6 +3,7 @@ import axios from "axios";
 import DataTable from "react-data-table-component";
 import { AiOutlineClose } from "react-icons/ai";
 import "./ShoppingList.css";
+import { toast } from "react-toastify";
 import {
   InputButton,
   InputButtonBorderless,
@@ -12,6 +13,7 @@ import {
 import { customStyles } from "../../../styles/tableStyles";
 import ShoplistItemEdit from "../../../components/StockSection/Shop/ShoplistItemEdit";
 import ShoplistItemAdd from "../../../components/StockSection/Shop/ShoplistItemAdd";
+import { StoreContext } from "../../../Context/StoreContext";
 
 const ShoppingList = () => {
   const [data, setData] = useState([]);
@@ -21,11 +23,13 @@ const ShoppingList = () => {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const modalRef = useRef(null);
 
+  const {apiUrl} = React.useContext(StoreContext)
+
   // Fetch inventory items
   const fetchShopItems = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3000/api/list_shopping_items"
+        `${apiUrl}/api/list_shopping_items`
       );
       console.log("API Response:", response.data); // Debugging the API response
       return Array.isArray(response.data.data) ? response.data.data : []; // Ensure it's an array
@@ -50,6 +54,7 @@ const ShoppingList = () => {
     const updatedData = await fetchShopItems();
     setData(updatedData);
     setDataFiltered(updatedData); // Apply the filter to the newly fetched data
+    
   };
 
   /// Close modal on clicking outside
@@ -69,7 +74,7 @@ const ShoppingList = () => {
   // Remove item function
   const removeItem = async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/api/remove_shop_item/${id}`);
+      await axios.delete(`${apiUrl}/api/remove_shop_item/${id}`);
       console.log(`Item with ID ${id} removed successfully.`);
       refetchShopItems(); // Refetch the inventory to update the list
     } catch (error) {
@@ -168,7 +173,7 @@ const ShoppingList = () => {
           <div className="shoplist-modal" ref={modalRef}>
             <ShoplistItemAdd
               onClose={() => setIsAddModalOpen(false)}
-              refetchStock={refetchShopItems} // Trigger refetch after adding
+              refetchShopItems={refetchShopItems} // Trigger refetch after adding
             />
           </div>
         )}
@@ -178,7 +183,7 @@ const ShoppingList = () => {
             <ShoplistItemEdit
               shoplistItems={data}
               onClose={() => setIsEditModalOpen(false)}
-              refetchStock={refetchShopItems} // Trigger refetch after editing
+              refetchShopItems={refetchShopItems} // Trigger refetch after editing
             />
           </div>
         )}

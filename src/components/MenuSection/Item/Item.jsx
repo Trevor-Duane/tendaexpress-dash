@@ -6,10 +6,9 @@ import { toast } from "react-toastify";
 import { StoreContext } from "../../../Context/StoreContext";
 
 const Item = () => {
+  const { apiUrl } = React.useContext(StoreContext);
 
-    const { apiUrl } = React.useContext(StoreContext)
-
-    const [subcategories, setSubcategories] = React.useState([])
+  const [subcategories, setSubcategories] = React.useState([]);
 
   const [image, setImage] = React.useState(false);
   const [data, setData] = React.useState({
@@ -29,21 +28,21 @@ const Item = () => {
 
   const fetchSubcategories = async (e) => {
     try {
-      const response = await axios.get(`${apiUrl}/api/subcategories`)
-    if(response.data.success){
-        console.log("subcategories", response.data.data)
-      setSubcategories(response.data.data)
-    } else {
-      toast.error(response.data.error)
-    }
+      const response = await axios.get(`${apiUrl}/api/subcategories`);
+      if (response.data.success) {
+        console.log("subcategories", response.data.data);
+        setSubcategories(response.data.data);
+      } else {
+        toast.error(response.data.error);
+      }
     } catch (error) {
-      toast.error(error)
+      toast.error(error);
     }
-  }
+  };
 
   React.useEffect(() => {
-    fetchSubcategories()
-  }, [])
+    fetchSubcategories();
+  }, []);
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
@@ -65,10 +64,10 @@ const Item = () => {
         item_rating: 5,
         subcategory_id: "",
       });
-      setImage(false)
-      toast.success(response.data.message)
+      setImage(false);
+      toast.success(response.data.message);
     } else {
-        toast.error(response.data.message)
+      toast.error(response.data.message);
     }
   };
   return (
@@ -83,7 +82,15 @@ const Item = () => {
             />
           </label>
           <input
-            onChange={(e) => setImage(e.target.files[0])}
+            onChange={(e) => {
+              const file = e.target.files[0];
+              if (file) {
+                if (image) {
+                  URL.revokeObjectURL(image); // Revoke the old URL
+                }
+                setImage(file); // Set new file
+              }
+            }}
             type="file"
             id="image"
             hidden
@@ -117,7 +124,11 @@ const Item = () => {
         <div className="item-subcategory-price">
           <div className="item-subcategory flex-col">
             <p>Item subcategory</p>
-            <select onChange={onChangeHandler} value={data.subcategory_id} name="subcategory_id">
+            <select
+              onChange={onChangeHandler}
+              value={data.subcategory_id}
+              name="subcategory_id"
+            >
               {subcategories.map((subcategory, index) => (
                 <option key={index} value={subcategory.id}>
                   {subcategory.subcategory_name}
@@ -142,6 +153,8 @@ const Item = () => {
               <option value="5">5</option>
               <option value="4">4</option>
               <option value="3">3</option>
+              <option value="3">2</option>
+              <option value="3">1</option>
             </select>
           </div>
         </div>

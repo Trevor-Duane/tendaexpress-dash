@@ -6,6 +6,7 @@ import {
   InputButtonOutline,
   InputButton,
 } from "../../Form/FormComponents";
+import { StoreContext } from "../../../Context/StoreContext";
 
 const InventoryAdd = ({ onClose, refetchStore }) => {
   const [budgets, setBudgets] = useState([]);
@@ -14,10 +15,12 @@ const InventoryAdd = ({ onClose, refetchStore }) => {
   const [inventoryItems, setInventoryItems] = useState([]);
   const [quantities, setQuantities] = useState({});
 
+  const {apiUrl} = React.useContext(StoreContext)
+
   // Fetch all budgets for the dropdown
   const fetchBudgets = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/budgets");
+      const response = await axios.get(`${apiUrl}/api/budgets`);
       setBudgets(response.data.data || []);
     } catch (error) {
       console.error("Error fetching budgets:", error);
@@ -28,7 +31,7 @@ const InventoryAdd = ({ onClose, refetchStore }) => {
   const fetchBudgetDetails = async (budgetId) => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/api/get_budget/${budgetId}`
+        `${apiUrl}/api/get_budget/${budgetId}`
       );
 
       const details = response.data;
@@ -72,7 +75,7 @@ const InventoryAdd = ({ onClose, refetchStore }) => {
     try {
       // Post each item to the server using Axios
       // for (const itemData of payload) {
-      await axios.post("http://localhost:3000/api/inventory/add", {
+      await axios.post(`${apiUrl}/api/inventory/add`, {
         budgetId: selectedBudgetId,
         payload, // Spread the individual item data
       });

@@ -5,6 +5,7 @@ import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 import axios from "axios";
 import "./BudgetScreen.css";
+import { StoreContext } from "../../../Context/StoreContext";
 import {
   InputButton,
   InputButtonOutline,
@@ -19,11 +20,13 @@ const BudgetScreen = () => {
   const [selectedItemId, setSelectedItemId] = useState("");
   const [budgetTitle, setBudgetTitle] = useState("");
 
+  const {apiUrl} = React.useContext(StoreContext)
+
   useEffect(() => {
     const fetchInventoryItems = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/api/list_inventory"
+          `${apiUrl}/api/list_inventory`
         );
         const items = Array.isArray(response.data.data)
           ? response.data.data

@@ -10,6 +10,7 @@ import {
 } from "../../../components/Form/FormComponents";
 import "./Budget.css";
 import EditBudget from "../../../components/StockSection/Budget/EditBudget";
+import { StoreContext } from "../../../Context/StoreContext";
 
 const Budgets = () => {
   const [data, setData] = useState([]);
@@ -22,10 +23,12 @@ const Budgets = () => {
   const [activeTab, setActiveTab] = useState("active"); // Tracks which tab is active (draft or active budgets)
   const modalRef = useRef(null);
 
+  const { apiUrl } = React.useContext(StoreContext)
+
   // Fetch active budgets from the budgets table
   const fetchActiveBudgets = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/budgets");
+      const response = await axios.get(`${apiUrl}/api/budgets`);
       return Array.isArray(response.data.data) ? response.data.data : [];
     } catch (error) {
       console.error("Error fetching active budgets:", error);
@@ -37,7 +40,7 @@ const Budgets = () => {
   const fetchDraftBudgets = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3000/api/budget_drafts"
+        `${apiUrl}/api/budget_drafts`
       );
       return Array.isArray(response.data.data) ? response.data.data : [];
     } catch (error) {

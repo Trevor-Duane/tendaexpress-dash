@@ -4,43 +4,64 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { StoreContext } from "../../../Context/StoreContext";
 
+
 const Subcategory = () => {
+  const { apiUrl } = React.useContext(StoreContext);
 
-  const {apiUrl} = React.useContext(StoreContext);
-
-  console.log("env", apiUrl)
-  const [categories, setCategories] = React.useState([])
+  console.log("env", apiUrl);
+  const [categories, setCategories] = React.useState([]);
 
   const [data, setData] = React.useState({
     category_id: 1,
     subcategory_name: "",
-   
   });
 
-  const fetchCategories = async (e) => {
-    try {
-      const response = await axios.get(`${apiUrl}/api/categories`)
-    if(response.data.success){
-      setCategories(response.data.data)
-    } else {
-      toast.error(response.data.error)
-    }
-    } catch (error) {
-      toast.error(error)
-    }
-  }
-
-  React.useEffect(() => {
-    fetchCategories()
-  }, [])
-
+  const fetchCategories = () => {
+    console.log("fetching categories")
+    axios.get(`${apiUrl}/api/categories`)
+      .then((response) => {
+        if (response.data.success) {
+          setCategories(response.data.data);
+          console.log("have fetched categories", response.data);
+        } else {
+          toast.error(response.data.error);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching categories:", error);
+        toast.error("An error occurred while fetching categories.");
+      });
+  };
   
+  React.useEffect(() => {
+    fetchCategories();
+  }, []);
+  
+
+  // const fetchCategories = (e) => {
+  //   try {
+  //     const response = axios.get(`${apiUrl}/api/categories`);
+  //     if (response.data.success) {
+  //       setCategories(response.data.data);
+  //       console.log("have fetched categories", response.data)
+  //     } else {
+  //       toast.error(response.data.error);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error fetching categories:", error); // Log the error in the console
+  //     toast.error("An error occurred while fetching categories.");
+  //   }
+  // };
+
+  // React.useEffect(() => {
+  //   fetchCategories();
+  // }, []);
+
   const onChangeHandler = (event) => {
     const name = event.target.name;
     const value = event.target.value;
 
     setData((data) => ({ ...data, [name]: value }));
-
   };
 
   const onSubmitHandler = async (e) => {
@@ -52,18 +73,17 @@ const Subcategory = () => {
 
     const response = await axios.post(`${apiUrl}/api/add-subcategory`, {
       subcategory_name: data.subcategory_name,
-      category_id: data.category_id
+      category_id: data.category_id,
     });
 
     if (response.data.success) {
       setData({
         category_id: 1,
         subcategory_name: "",
-       
       });
-      toast.success(response.data.message)
+      toast.success(response.data.message);
     } else {
-        toast.error(response.data.message)
+      toast.error(response.data.message);
     }
   };
 
@@ -84,13 +104,18 @@ const Subcategory = () => {
         <div className="subcategory-id">
           <div className="subcategory flex-col">
             <p>Choose category</p>
-            <select onChange={onChangeHandler} value={data.category_id} name="category_id">
+            <select
+              onChange={onChangeHandler}
+              value={data.category_id}
+              name="category_id"
+            >
               {categories.map((category, index) => (
                 <option key={index} value={category.id}>
                   {category.category_name}
                 </option>
               ))}
             </select>
+
           </div>
         </div>
         <button type="submit" className="subcategory-btn">

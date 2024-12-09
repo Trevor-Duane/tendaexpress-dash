@@ -10,12 +10,12 @@
   align-items: center;
 }
 
-.budget-modal-content {
+.addendum-budget-modal-content {
   background: white;
   padding: 20px;
   border-radius: 5px;
-  width: 85%;
-  height: 85%;
+  width: 50%;
+  height: 55%;
   overflow-y: scroll;
   position: relative;
 }
@@ -24,7 +24,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #a020f0; /* Blue background */
+  background-color: #663399; /* Blue background */
   color: white; /* Text color for header */
   padding: 10px;
   /* border-top-left-radius: 10px; */
@@ -33,17 +33,21 @@
 .budget-modal-header h2 {
   margin: 0;
 }
-.budget-details-row{
+.addendum-budget-details-row{
   margin-top: 1rem;
   display: flex;
   gap: 8px;
-  /* justify-content: space-between; */
-  align-items: center;
 }
-.budget-detail-col{
+.addendum-budget-detail-col{
   flex: 1;
-}
 
+}
+.addendum-budget-select{
+  height: 37px;
+  border: 1px solid #a9a9a9;
+  padding: 10px;
+  width: 100%;
+}
 .budget-okay-button {
   background: none;
   border: none;
@@ -74,7 +78,7 @@
 }
 
 .budget-modal-footer button[type="submit"] {
-  background-color: #a020f0; /* Green for submit button */
+  background-color: #663399; /* Green for submit button */
   color: white; /* Text color for submit button */
   border: none;
   /* border-radius: 5px; */
@@ -90,16 +94,18 @@
 
 /* ////////////////Above is css for Budget-Modal//////////////////////// */
 
-.budget-form-controls{
+.addendum-budget-form-controls{
     display: flex;
+    width: 100%;
     align-items: baseline;
     gap: 6px;
     padding: 4px;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
     background-color: #e2c0f8;
-    justify-content: start;
+    justify-content: center;
 }
-.budget-wrapper{
+.addendum-budget-wrapper{
+  width: 100%;
     /* background-color: slateblue; */
 }
 .budget-wrapper h3{
@@ -115,8 +121,9 @@
     padding: 1rem;
     margin: auto;
 }
-.budget-table-wrapper{
+.addendum-budget-table-wrapper{
     /* background-color: aquamarine; */
+    width: 100%;
 }
 .budget-section-head{
     background-color: #000;
@@ -136,11 +143,12 @@
 
 
 
-.budget-table {
+.addendum-table {
   width: 100%;  /* Full width of container */
   height: auto; /* Auto height (depends on content) */
   border-collapse: collapse;  /* Remove space between cells */
   margin: 20px 0;  /* Add some margin around the table */
+  text-align: left;
 }
 
 /* Style for table rows */

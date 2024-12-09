@@ -3,6 +3,7 @@ import axios from "axios";
 import "./Add.css";
 import { AiOutlineClose } from "react-icons/ai";
 import { InputField } from "../../Form/FormComponents";
+import { StoreContext } from "../../../Context/StoreContext";
 
 const StockTransfer = ({ stockItems, onClose, refetchStock }) => {
   const [fromStock, setFromStock] = useState('');
@@ -10,6 +11,8 @@ const StockTransfer = ({ stockItems, onClose, refetchStock }) => {
   const [quantity, setQuantity] = useState('');
   const [movementType, setMovementType] = useState('transfer');
   const [section, setSection] = useState('');
+
+  const { apiUrl } = React.useContext(StoreContext)
 
 
   const handleSubmit = async (e) => {
@@ -25,7 +28,7 @@ const StockTransfer = ({ stockItems, onClose, refetchStock }) => {
   console.log("Stock item:", foundStockItem.stock_item); // Should output the stock item name
     // Log the stock transfer into the stock_movement table
     try {
-      const response = await axios.post('http://localhost:3000/api/stock_movement', {
+      const response = await axios.post(`${apiUrl}/api/stock_movement`, {
         stock_item: foundStockItem.stock_item, // Set the stock item name
         from_stock_id: parseInt(fromStock),
         to_stock_id: parseInt(toStock),

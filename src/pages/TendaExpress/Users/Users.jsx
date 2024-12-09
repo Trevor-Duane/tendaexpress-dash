@@ -3,6 +3,7 @@ import axios from "axios";
 import DataTable from "react-data-table-component";
 import { AiOutlineClose } from "react-icons/ai";
 import { customStyles } from "../../../styles/tableStyles";
+import { StoreContext } from "../../../Context/StoreContext";
 import './Users.css'
 
 const Users = () => {
@@ -10,11 +11,13 @@ const Users = () => {
   const [filterText, setFilterText] = useState("");
   const [dataFiltered, setDataFiltered] = useState([]);
 
+  const {apiUrl} = React.useContext(StoreContext)
+
 
   // Fetch inventory items
   const fetchUsers = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/users");
+      const response = await axios.get(`${apiUrl}/api/users`);
       console.log("API Response:", response.data); // Debugging the API response
       return Array.isArray(response.data.data) ? response.data.data : []; // Ensure it's an array
     } catch (error) {

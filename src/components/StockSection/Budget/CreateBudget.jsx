@@ -23,14 +23,14 @@ const CreateBudget = ({ onClose }) => {
   const [to_date, setTo_date] = useState("");
   const [remarks, setRemarks] = useState("");
 
-  const { user, token } = useContext(StoreContext)
+  const { user, token, apiUrl } = useContext(StoreContext)
   console.log("this is a create budget user", token)
 
   useEffect(() => {
     const fetchInventoryItems = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/api/list_shopping_items"
+          `${apiUrl}/api/list_shopping_items`
         );
         const items = Array.isArray(response.data.data)
           ? response.data.data
@@ -144,7 +144,7 @@ const CreateBudget = ({ onClose }) => {
       );
       //create a new budget in the budgets table
       const budgetResponse = await axios.post(
-        "http://localhost:3000/api/create_budget",
+        `${apiUrl}/api/create_budget`,
         {
           budget_head: budgetTitle,
           from_date: from_date,
@@ -173,7 +173,7 @@ const CreateBudget = ({ onClose }) => {
       );
 
       // Insert items into the `budget_details` table
-      await axios.post("http://localhost:3000/api/create_budget_details", {
+      await axios.post(`${apiUrl}/api/create_budget_details`, {
         details: budgetDetails,
       });
 
@@ -224,10 +224,10 @@ const CreateBudget = ({ onClose }) => {
           />
         </div>
       </div>
-      <div className="budget-form-controls">
+      <div className="normal-budget-form-controls">
         <div>
           <select
-            className="inventory-edit-select"
+            className="budget-select"
             onChange={handleItemSelect}
             value={selectedItemId}
           >

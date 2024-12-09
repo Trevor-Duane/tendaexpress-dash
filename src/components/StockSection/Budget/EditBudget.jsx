@@ -18,13 +18,13 @@ const EditBudget = ({ budgetId, onClose }) => {
   const [to_date, setTo_date] = useState("");
   const [remarks, setRemarks] = useState("");
 
-  const { user } = useContext(StoreContext);
+  const { user, apiUrl } = useContext(StoreContext);
 
   useEffect(() => {
     const fetchInventoryItems = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/api/list_shopping_items"
+          `${apiUrl}/api/list_shopping_items`
         );
         const items = Array.isArray(response.data.data)
           ? response.data.data
@@ -38,7 +38,7 @@ const EditBudget = ({ budgetId, onClose }) => {
     const fetchBudgetData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/api/get_budget/${budgetId}`
+          `${apiUrl}/api/get_budget/${budgetId}`
         );
         const budgetData = response.data;
 
@@ -181,7 +181,7 @@ const EditBudget = ({ budgetId, onClose }) => {
         }))
       );
 
-      await axios.put(`http://localhost:3000/api/update_budget/${budgetId}`, {
+      await axios.put(`${apiUrl}/api/update_budget/${budgetId}`, {
         budget_head: budgetTitle,
         from_date: from_date,
         to_date: to_date,

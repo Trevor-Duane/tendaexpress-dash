@@ -10,6 +10,7 @@ import {
   InputButtonOutline,
   InputField,
 } from "../../../components/Form/FormComponents";
+import { StoreContext } from "../../../Context/StoreContext";
 
 const Store = () => {
   const [data, setData] = useState([]);
@@ -19,10 +20,12 @@ const Store = () => {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const modalRef = useRef(null);
 
+  const {apiUrl} = React.useContext(StoreContext)
+
   // Fetch inventory items
   const fetchStoreItems = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/store_items");
+      const response = await axios.get(`${apiUrl}/api/store_items`);
       console.log("API Response:", response.data); // Debugging the API response
       return Array.isArray(response.data.data) ? response.data.data : []; // Ensure it's an array
     } catch (error) {
@@ -35,6 +38,7 @@ const Store = () => {
   useEffect(() => {
     const loadStore = async () => {
       const fetchedData = await fetchStoreItems();
+      console.log("fetched data", fetchedData)
       setData(fetchedData);
       setDataFiltered(fetchedData);
     };
@@ -65,7 +69,7 @@ const Store = () => {
   // Remove item function
   const removeItem = async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/api/remove_inventory/${id}`);
+      await axios.delete(`${apiUrl}/api/remove_inventory/${id}`);
       console.log(`Item with ID ${id} removed successfully.`);
       refetchStore(); // Refetch the inventory to update the list
     } catch (error) {
@@ -145,13 +149,13 @@ const Store = () => {
             />
           </div>
           <div>
-            <InputButtonOutline onClick={() => setIsAddModalOpen(true)}>
+            <InputButton onClick={() => setIsAddModalOpen(true)}>
               Replenish Store
-            </InputButtonOutline>
-
-            <InputButton onClick={() => setIsEditModalOpen(false)}>
-              Edit Item
             </InputButton>
+
+            {/* <InputButton onClick={() => setIsEditModalOpen(true)}>
+              Edit Item
+            </InputButton> */}
           </div>
         </div>
         <DataTable

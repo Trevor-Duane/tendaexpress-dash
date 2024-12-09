@@ -20,7 +20,7 @@ const BudgetDetails = ({ budget, goBack }) => {
   const [updatingStatus, setUpdatingStatus] = useState(false); // For handling status update loading
   const [status, setStatus] = useState(budget.budget_status); // For tracking status
 
-  const { user } = useContext(StoreContext); // Get user from context
+  const { user, apiUrl } = useContext(StoreContext); // Get user from context
   // const userInfo  = JSON.parse(localStorage.getItem("userInfo"))
 
   console.log("user at budget details", user);
@@ -30,7 +30,7 @@ const BudgetDetails = ({ budget, goBack }) => {
   const fetchBudgetDetails = async (id) => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/api/budget/${id}/details`
+        `${apiUrl}/api/budget/${id}/details`
       );
       console.log("details", response.data.data);
       return response.data.data; // Assuming the API returns an array of budget items in data
@@ -102,7 +102,7 @@ const BudgetDetails = ({ budget, goBack }) => {
           setUpdatingStatus(true); 
 
           const response = await axios.post(
-            `http://localhost:3000/api/budget_status`,
+            `${apiUrl}/api/budget_status`,
             {
               id: budget.id,
               budget_status: selectedStatus,

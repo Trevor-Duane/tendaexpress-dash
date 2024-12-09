@@ -3,6 +3,7 @@ import axios from "axios";
 import "./Add.css";
 import { AiOutlineClose } from "react-icons/ai";
 import { InputField } from "../../Form/FormComponents";
+import { StoreContext } from "../../../Context/StoreContext";
 
 const StockAdd = ({ onClose, refetchStock }) => {
   const [formData, setFormData] = useState({
@@ -15,6 +16,8 @@ const StockAdd = ({ onClose, refetchStock }) => {
     category: "",
     tags: "",
   });
+
+  const { apiUrl } = React.useContext(StoreContext)
 
   // Handle form input change
   const handleChange = (e) => {
@@ -30,7 +33,7 @@ const StockAdd = ({ onClose, refetchStock }) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/add_stock",
+        `${apiUrl}/api/add_stock`,
         formData
       );
       console.log("Form Submitted Successfully:", response.data);

@@ -4,6 +4,7 @@ import DataTable from "react-data-table-component";
 import { customStyles } from "../../../styles/tableStyles";
 import CreateBudget from "../../../components/StockSection/Budget/CreateBudget";
 import BudgetDetails from "./BudgetDetail/BudgetDetails";
+import { StoreContext } from "../../../Context/StoreContext";
 import {
   InputButton,
   InputButtonOutline,
@@ -25,10 +26,12 @@ const Budgets = () => {
   const [activeTab, setActiveTab] = useState("weekly"); // Default to 'weekly' tab
   const modalRef = useRef(null);
 
+  const {apiUrl} = React.useContext(StoreContext)
+
   // Fetch weekly budgets
   const fetchWeeklyBudgets = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/budgets");
+      const response = await axios.get(`${apiUrl}/api/budgets`);
       return Array.isArray(response.data.data) ? response.data.data : [];
     } catch (error) {
       console.error("Error fetching weekly budgets:", error);
@@ -39,7 +42,7 @@ const Budgets = () => {
   // Fetch additional budgets
   const fetchAdditionalBudgets = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/budget_drafts");
+      const response = await axios.get(`${apiUrl}/api/budget_drafts`);
       return Array.isArray(response.data.data) ? response.data.data : [];
     } catch (error) {
       console.error("Error fetching additional budgets:", error);

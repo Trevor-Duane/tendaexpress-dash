@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Dropdown, InputField, styles } from "../../Form/FormComponents";
+import { StoreContext } from "../../../Context/StoreContext";
 
 const StockEdit
  = ({ stockItems, onClose, refetchStock }) => {
@@ -16,6 +17,8 @@ const StockEdit
     category: "",
     tag: "",
   });
+
+  const { apiUrl } = React.useContext(StoreContext)
   
 
   // Populate form when item is selected from the dropdown
@@ -50,7 +53,7 @@ const StockEdit
     try {
       if (selectedItem) {
         const response = await axios.put(
-          `http://localhost:3000/api/update_stock/${selectedItem.id}`,
+          `${apiUrl}/api/update_stock/${selectedItem.id}`,
           formData
         );
         console.log("Item updated successfully:", response.data);

@@ -24,7 +24,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #a020f0; /* Blue background */
+  background-color: #663399; /* Blue background */
   color: white; /* Text color for header */
   padding: 10px;
   /* border-top-left-radius: 10px; */
@@ -42,6 +42,12 @@
 }
 .budget-detail-col{
   flex: 1;
+}
+.budget-select{
+  height: 37px;
+  border: 1px solid #a9a9a9;
+  padding: 10px;
+  width: 100%;
 }
 
 .budget-okay-button {
@@ -74,7 +80,7 @@
 }
 
 .budget-modal-footer button[type="submit"] {
-  background-color: #a020f0; /* Green for submit button */
+  background-color: #663399; /* Green for submit button */
   color: white; /* Text color for submit button */
   border: none;
   /* border-radius: 5px; */
@@ -90,14 +96,15 @@
 
 /* ////////////////Above is css for Budget-Modal//////////////////////// */
 
-.budget-form-controls{
+.normal-budget-form-controls{
     display: flex;
+    width: 100%;
     align-items: baseline;
     gap: 6px;
     padding: 4px;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
     background-color: #e2c0f8;
-    justify-content: start;
+    justify-content: center;
 }
 .budget-wrapper{
     /* background-color: slateblue; */
@@ -116,7 +123,7 @@
     margin: auto;
 }
 .budget-table-wrapper{
-    /* background-color: aquamarine; */
+    width: 100%;
 }
 .budget-section-head{
     background-color: #000;
@@ -128,7 +135,7 @@
     color: #fff;
 }
 .budget-table-wrapper table{
-    /* background-color: yellow; */
+    width: 100%;
 }
 
 

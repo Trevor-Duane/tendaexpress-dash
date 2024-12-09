@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Dropdown, InputField, styles } from "../../Form/FormComponents";
+import { StoreContext } from "../../../Context/StoreContext";
 
 const ShoplistItemEdit = ({ shoplistItems, onClose, refetchShopItems }) => {
   const [selectedItem, setSelectedItem] = useState(null);
@@ -10,6 +11,7 @@ const ShoplistItemEdit = ({ shoplistItems, onClose, refetchShopItems }) => {
     uom: "",
     unit_price: "",
   });
+  const { apiUrl } = React.useContext(StoreContext)
 
   // Populate form when item is selected from the dropdown
   const handleItemChange = (e) => {
@@ -38,7 +40,7 @@ const ShoplistItemEdit = ({ shoplistItems, onClose, refetchShopItems }) => {
     try {
       if (selectedItem) {
         const response = await axios.put(
-          `http://localhost:3000/api/update_shoplist_item/${selectedItem.id}`,
+          `${apiUrl}/api/update_shoplist_item/${selectedItem.id}`,
           formData
         );
         console.log("Item updated successfully:", response.data);
