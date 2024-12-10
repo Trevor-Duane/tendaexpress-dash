@@ -51,7 +51,7 @@ const ShoplistItemAdd = ({ onClose, refetchShopItems }) => {
               type="text"
               placeholder="Item Name"
               id="iname"
-              name="shoplist_item"
+              name="item_name"
               value={formData.item_name}
               onChange={handleChange}
             />
