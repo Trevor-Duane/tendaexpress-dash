@@ -23,21 +23,21 @@
   color: black;
   text-transform: capitalize;
 }
-.status-accepted{
+.status-Accepted{
   color: orange;
   text-transform: capitalize;
 }
-.status-acknowledged {
+.status-Recieved {
   color: purple;
   text-transform: capitalize;
 
 }
-.status-approved {
+.status-Approved {
   color: green;
   text-transform: capitalize;
 }
 
-.status-rejected {
+.status-Rejected {
   color: red;
   text-transform: capitalize;
 

@@ -9,11 +9,19 @@ const Recipe = () => {
   const [store, setStore] = useState([]);
   const [products, setProducts] = useState([]);
 
+  const uomValues = [
+    { id: 1, value: 'grams' },
+    { id: 2, value: 'pieces' },
+    { id: 3, value: 'wings' },
+    { id: 4, value: 'spoons' },
+    { id: 5, value: 'scopes' },
+  ]
+
   const [data, setData] = useState({
     product_id: "",
     store_id: "",
     usage_amount: "",
-    uom: "grams", // Default value for UOM
+    uom: "", // Default value for UOM
   });
 
   const onChangeHandler = (event) => {
@@ -69,7 +77,7 @@ const Recipe = () => {
           product_id: "",
           store_id: "",
           usage_amount: "",
-          uom: "grams",
+          uom: "",
         });
         toast.success(response.data.message);
       } else {
@@ -126,7 +134,26 @@ const Recipe = () => {
         </div>
         <div className="recipe-row">
           <div className="recipe-col flex-col">
-            <p>Usage Amount (g)</p>
+            <p>UOM</p>
+            <select
+              onChange={onChangeHandler}
+              value={data.uom || ""}
+              name="uom"
+              required
+            >
+              <option value="" disabled>
+                Select Appropriate UOM
+              </option>
+
+              {uomValues.map((item) => (
+                <option key={item.id} value={item.value}>
+                  {item.value}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="recipe-col flex-col">
+            <p>Usage Amount ({data.uom || ""})</p>
             <input
             required
               onChange={onChangeHandler}
@@ -136,17 +163,7 @@ const Recipe = () => {
               placeholder="e.g. 100"
             />
           </div>
-
-          <div className="recipe-col flex-col">
-            <p>UOM</p>
-            <input
-              readOnly
-              value={data.uom}
-              type="text"
-              name="uom"
-              placeholder="grams"
-            />
-          </div>
+        
         </div>
 
         <button type="submit" className="item-btn">

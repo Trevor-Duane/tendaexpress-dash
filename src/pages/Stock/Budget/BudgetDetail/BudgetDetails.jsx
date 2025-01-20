@@ -154,12 +154,12 @@ const BudgetDetails = ({ budget, goBack }) => {
                 </option>
                 {/* Conditionally render options based on user permissions */}
                 {user.permissions.includes("acknowledge_budget_reciept") && (
-                  <option value="accepted">Acknowledge Receipt</option>
+                  <option value="Recieved">Acknowledge Receipt</option>
                 )}
                 {/* <option value="received">Acknowledge Receipt</option>  */}
-                <option value="accepted">Accept Budget</option>
-                <option value="rejected">Reject Budget</option>
-                <option value="approved">Approve Budget</option>
+                <option value="Accepted">Accept Budget</option>
+                <option value="Rejected">Reject Budget</option>
+                <option value="Approved">Approve Budget</option>
               </select>
             </div>
             <div>

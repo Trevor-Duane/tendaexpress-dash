@@ -1,0 +1,125 @@
+.content-page.dashboard {
+    font-family: Arial, sans-serif;
+    color: white;
+    /* background-color: black; */
+    padding: 20px;
+  }
+  
+  .dashboard-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .dashboard-head {
+    font-size: 24px;
+    color: #663399;
+    margin-bottom: 15px;
+  }
+  
+  .tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .tab-button {
+    background-color: #1a1a1a;
+    color: white;
+    border: 1px solid #663399;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+  
+  .tab-button.active {
+    background-color: #663399;
+    color: white;
+  }
+  
+  .tab-button:hover {
+    background-color: #333;
+  }
+  
+  .table-section {
+    margin-top: 20px;
+  }
+  
+  .dashboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  .dashboard-table th,
+  .dashboard-table td {
+    /* border: 1px solid #663399; */
+    border: 1px solid #737373;
+    padding: 10px;
+    text-align: left;
+    color: rgb(36, 36, 36);
+  }
+  
+  .dashboard-table th {
+    background-color: #663399;
+    color: white;
+  }
+  
+  .dashboard-table tr:nth-child(even) {
+    background-color: #bab6b6;
+  }
+  
+  /* Recipe Cards Styles */
+  .recipe-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  .recipe-image-container {
+    width: 100%; /* Or set a fixed width */
+    height: 200px; /* Adjust as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Ensures the image does not overflow the container */
+    border: 1px solid #ccc; /* Optional: for visual feedback */
+    border-radius: 8px; /* Optional: for rounded corners */
+  }
+  
+  .recipe-image-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover; /* Ensures the image fills the container while maintaining its aspect ratio */
+  }
+  
+  .recipe-card {
+    background-color: #1a1a1a;
+    border: 1px solid #663399;
+    border-radius: 10px;
+    padding: 15px;
+    width: 250px;
+    text-align: center;
+    color: white;
+  }
+  
+  .recipe-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .recipe-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .ingredients-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+  }
+  

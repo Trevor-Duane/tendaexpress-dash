@@ -1,0 +1,89 @@
+/* Global styles for the reports page */
+.reports-page {
+    padding: 20px;
+    background-color: #f4f6f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .page-title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #2a2a2a;
+  }
+  
+  /* Styling for the filter section */
+  .filters {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .filter-select, .filter-date, .filter-btn {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .filter-select, .filter-date {
+    width: 150px;
+  }
+  
+  .filter-btn {
+    background-color: #a020f0;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .filter-btn:hover {
+    background-color: #8b17c1;
+  }
+  
+  /* Styling for the report table */
+  .report-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .report-table th, .report-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .report-table th {
+    background-color: #f1f1f1;
+    font-size: 18px;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .report-table td {
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .report-table tr:hover {
+    background-color: #f9f9f9;
+  }
+  
+  /* Styling for the download button */
+  .download-btn {
+    padding: 6px 12px;
+    background-color: #a020f0;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .download-btn:hover {
+    background-color: #8b17c1;
+  }
+  

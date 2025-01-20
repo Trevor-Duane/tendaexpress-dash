@@ -25,9 +25,9 @@ const Sidebar = () => {
                   <p>Dashboard</p>
                 </NavLink>
 
-                {/* <NavLink to="/dashboard" className="sidebar-option">
-                <p>User Configurations</p>
-              </NavLink> */}
+                <NavLink to="/dashboard/user_management" className="sidebar-option">
+                <p>User Management</p>
+              </NavLink>
 
                 {/* <NavLink to="/dashboard" className="sidebar-option">
                 <p>Tools</p>
@@ -47,9 +47,9 @@ const Sidebar = () => {
               <NavLink to="menu/list" className="sidebar-option">
                 <p>Menu Items</p>
               </NavLink>
-              {/* <NavLink to="/item_recipes" className="sidebar-option">
-                <p>Item Recipes</p>
-              </NavLink> */}
+              <NavLink to="menu/item_view" className="sidebar-option">
+                <p>Item View</p>
+              </NavLink>
             </div>
 
             
@@ -99,9 +99,9 @@ const Sidebar = () => {
               <NavLink to="tenda_express/promos" className="sidebar-option">
                 <p>Promos</p>
               </NavLink>
-              <NavLink to="tenda_express/users" className="sidebar-option">
+              {/* <NavLink to="tenda_express/users" className="sidebar-option">
                 <p>App Users</p>
-              </NavLink>
+              </NavLink> */}
             </div>
 
             {/* Sales and Reports */}
@@ -111,11 +111,7 @@ const Sidebar = () => {
                 <h4>Sales and Reports</h4>
               </div>
               <NavLink to="reports" className="sidebar-option">
-                <p>Items</p>
-              </NavLink>
-
-              <NavLink to="settings" className="sidebar-option">
-                <p>Sales Link</p>
+                <p>Reports</p>
               </NavLink>
             </div>
           </div>

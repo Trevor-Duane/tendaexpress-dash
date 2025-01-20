@@ -75,7 +75,7 @@ const InventoryAdd = ({ onClose, refetchStore }) => {
     try {
       // Post each item to the server using Axios
       // for (const itemData of payload) {
-      await axios.post(`${apiUrl}/api/inventory/add`, {
+      await axios.post(`${apiUrl}/api/add_inventory`, {
         budgetId: selectedBudgetId,
         payload, // Spread the individual item data
       });

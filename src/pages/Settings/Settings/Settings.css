@@ -1,0 +1,106 @@
+/* Settings Page Styles */
+.settings-page {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #edd9f9;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .settings-header {
+    margin-bottom: 20px;
+  }
+  
+  .settings-header h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2b2828;
+  }
+  
+  .settings-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .settings-group {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .settings-group h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #a020f0;
+  }
+  
+  .settings-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+  }
+  
+  .settings-item label {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  .settings-item input,
+  .settings-item select {
+    padding: 8px 10px;
+    border: 1px solid #cacaca;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  .settings-item input:focus,
+  .settings-item select:focus {
+    border-color: #a020f0;
+    box-shadow: 0 0 3px rgba(160, 32, 240, 0.4);
+    outline: none;
+  }
+  
+  .settings-item input[type="checkbox"] {
+    margin-right: 8px;
+  }
+  
+  .settings-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+  
+  .btn-save,
+  .btn-cancel {
+    padding: 10px 15px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .btn-save {
+    background-color: #a020f0;
+    color: white;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-save:hover {
+    background-color: #7a10b8;
+  }
+  
+  .btn-cancel {
+    background-color: #ddd;
+    color: #333;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-cancel:hover {
+    background-color: #bbb;
+  }
+  

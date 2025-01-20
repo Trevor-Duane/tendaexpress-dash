@@ -28,7 +28,6 @@ const CreateAddendum = ({ onClose }) => {
 
 
   useEffect(() => {
-    // Fetch existing budgets
     const fetchBudgets = async () => {
       try {
         const response = await axios.get(`${apiUrl}/api/budgets`);
@@ -94,8 +93,8 @@ const CreateAddendum = ({ onClose }) => {
           ...selectedItems,
           [section]: [...(selectedItems[section] || []), newItem],
         });
-        setItemQuantity(1);
-        setSelectedItemId("");
+        // setItemQuantity(1);
+        // setSelectedItemId("");
       } else {
         alert("Please enter a valid quantity.");
       }

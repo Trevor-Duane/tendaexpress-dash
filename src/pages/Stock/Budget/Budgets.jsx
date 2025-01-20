@@ -42,7 +42,7 @@ const Budgets = () => {
   // Fetch additional budgets
   const fetchAdditionalBudgets = async () => {
     try {
-      const response = await axios.get(`${apiUrl}/api/budget_drafts`);
+      const response = await axios.get(`${apiUrl}/api/addendum_budgets`);
       return Array.isArray(response.data.data) ? response.data.data : [];
     } catch (error) {
       console.error("Error fetching additional budgets:", error);
@@ -134,7 +134,7 @@ const Budgets = () => {
       if (modalRef.current && !modalRef.current.contains(event.target)) {
         setIsCreateModalOpen(false);
         setIsBudgetEditModalOpen(false);
-        setIsAddedumModalOpen(false);
+        setIsAddendumModalOpen(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
@@ -163,6 +163,7 @@ const Budgets = () => {
                 Weekly Budgets
               </button>
               <button
+              disabled
                 className={activeTab === "additional" ? "tab-active" : "tab"}
                 onClick={() => handleTabSwitch("additional")}
               >
@@ -184,9 +185,9 @@ const Budgets = () => {
               <InputButtonOutline onClick={() => setIsCreateModalOpen(true)}>
                 New Budget
               </InputButtonOutline>
-              <InputButton onClick={() => setIsAddendumModalOpen(true)}>
+              {/* <InputButton onClick={() => setIsAddendumModalOpen(true)}>
                 Add Addendum
-              </InputButton>
+              </InputButton> */}
               </div>
             </div>
 

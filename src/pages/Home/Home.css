@@ -1,131 +1,139 @@
-.login-page{
+.login-page {
     display: flex;
     height: 100vh;
     width: 100%;
     align-items: center;
     justify-content: center;
+    background: #f4f4f9; /* Lighter background color for a soft feel */
 }
-.home-container{
-    place-self: center;
+
+.home-container {
     width: max(20vw, 330px);
-    color: #808080;
-    background-color: white;
+    background-color: #ffffff;
+    color: #333;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    border: 1px solid #e2e2e2;
-    border-radius: 8px;
-    font-size: 14px;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    border-radius: 12px;
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+    padding: 40px 35px;
     animation: fadeIn 0.5s;
-
 }
-.login-title{
-    background-color: rgb(43, 40, 40);
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
+
+.login-title {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 15px 0;
 }
-.login-title img{
-    padding: 35px 30px;
-    width: max(10%, 240px);
-    
+
+.login-title img {
+    width: 180px;
+    max-width: 90%;
 }
-.login-inputs{
+
+.login-inputs {
     display: flex;
     flex-direction: column;
-    padding: 20px 20px;
-    gap: 25px;
+    gap: 15px;
 }
+
 .login-inputs input {
     outline: none;
-    border: 1px solid #c9c9c9;
-    background-color: #f1e9f6;
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease;
-    padding: 10px;
+    border: 1px solid #d0d0d0;
+    background-color: #fafafa;
+    padding: 12px 15px;
     font-size: 16px;
-    border-radius: 4px;
+    border-radius: 8px;
+    box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease-in-out;
 }
-.forgot-password{
+
+.login-inputs input:focus {
+    border-color: #a020f0; /* Highlight border color on focus */
+    background-color: #ffffff;
+}
+
+.forgot-password {
     display: flex;
-    align-items: flex-end;
-    justify-content: end;
+    justify-content: flex-end;
     padding: 0 20px;
+}
 
-}
-.forgot-password p{
-     font-size: 14px;
-}
-.forgot-password span{
-    color: #a020f0;
-    padding: 0 4px;
-    font-weight: 400;
-    cursor: pointer;
-}
-.login-button{
-    padding: 20px 20px;
-
-}
-.login-button button{
-    border: none;
-    width: 100%;
-    padding: 10px;
-    border-radius: 4px;
-    color: white;
-    /* background-color: rgb(43, 40, 40); */
-    background-color: #a020f0;
-    font-size: 15px;
-    cursor: pointer;
-}
-.login-inputs input::placeholder {
-    /* color: #a020f0; */
-    color: rgb(43, 40, 40);;
-    font-weight: 400;
+.forgot-password p {
     font-size: 14px;
 }
-.account-request{
+
+.forgot-password span {
+    color: #a020f0;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.login-button {
+    padding: 15px 0;
+}
+
+.login-button button {
+    width: 100%;
+    padding: 12px;
+    background-color: #a020f0;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.login-button button:hover {
+    background-color: #8b17c0; /* Darker shade on hover */
+}
+
+.account-request {
     display: flex;
     flex-direction: column;
-    /* margin-top: 2px; */
     padding: 10px 0;
-}
-.account-request p{
     text-align: center;
 }
-.account-request span{
-    color: #a020f0;
-    font-weight: 400;
-    cursor: pointer;
+
+.account-request p {
+    font-size: 14px;
+    color: #333;
 }
 
-
-
-
-
-
-
-
-
-
+.account-request span {
+    color: #a020f0;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: underline;
+}
 
 .password-input-container {
     position: relative;
     display: flex;
     align-items: center;
-  }
-  
-  .password-input-container input {
+}
+
+.password-input-container input {
     flex: 1;
-  }
-  
-  .password-icon {
+    padding-right: 40px; /* Added space for the icon */
+}
+
+.password-icon {
     position: absolute;
     right: 10px;
     cursor: pointer;
     color: #666;
-  }
-  
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

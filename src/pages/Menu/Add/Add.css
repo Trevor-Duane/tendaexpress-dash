@@ -1,20 +1,48 @@
-.add-page{
+/* Global Styles for the Add Page */
+.add-page {
     display: flex;
     align-items: center;
     justify-content: flex-start;
     gap: 20px;
     background-color: #edd9f9;
-}
-.radio-buttons{
+    padding: 20px;
+    /* border-bottom-left-radius: 8px; */
+    /* border-bottom-right-radius: 8px; */
+    /* border-radius: 8px; */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Styling for Radio Buttons */
+  .radio-buttons {
     display: flex;
     align-items: center;
-}
-.radio-buttons label{
+  }
+  
+  .radio-buttons label {
     padding-left: 8px;
     cursor: pointer;
     margin: 5px 0;
-}
-.radio-buttons input:checked{
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    transition: color 0.3s ease;
+  }
+  
+  /* Hover effect for labels */
+  .radio-buttons label:hover {
+    color: #a020f0;
+  }
+  
+  /* Styling for the radio input when checked */
+  .radio-buttons input:checked {
+    accent-color: #a020f0; /* Purple color for the radio button */
     border-color: #a020f0;
-  background-color: #a020f0;
-}
+    background-color: #a020f0;
+  }
+  
+  /* Focus state for the radio button */
+  .radio-buttons input:focus {
+    outline: none;
+    box-shadow: 0 0 3px 3px rgba(160, 32, 240, 0.4);
+  }
+  

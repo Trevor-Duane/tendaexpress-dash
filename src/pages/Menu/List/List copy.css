@@ -1,21 +1,10 @@
 /* css for actuall shoplst page */
 .menuPageHeaderWrapper {
-    /* background-color: #edd9f9;
-    margin-bottom: 10px; */
-
-    align-items: center;
-    justify-content: flex-start;
-    gap: 20px;
     background-color: #edd9f9;
-    padding: 20px;
-    /* border-bottom-left-radius: 8px; */
-    /* border-bottom-right-radius: 8px; */
-    /* border-radius: 8px; */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
     
     
   }
-  
   .menuPageHeaderWrapper h1 {
     padding: 4px 8px;
     font-family: Arial, Helvetica, sans-serif !important;

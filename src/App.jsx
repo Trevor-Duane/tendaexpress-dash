@@ -1,7 +1,9 @@
 import { React, lazy, Suspense, useContext, useEffect } from "react";
-import { Route, Routes, useNavigate, useNavigation } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import Sidebar from "./components/Sidebar/Sidebar";
 import { StoreContext } from "./Context/StoreContext.jsx";
+import ItemView from "./pages/Menu/Views/ItemView.jsx";
+import UserManagement from "./pages/Dashboard/Usermanagement/UserManagement.jsx";
 
 // Lazy load components
 const Home = lazy(() => import("./pages/Home/Home"));
@@ -26,67 +28,116 @@ const NotFound = lazy(() => import("./pages/NotFound/NotFound.jsx"));
 
 function PublicRoutes() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <Routes>
-        {/* Public Routes */}
-        <Route path="/" element={<Home />} />
-        <Route path="/account_request" element={<AccountRequest />} />
-        <Route path="/email_verification" element={<EmailVerification />} />
+    <Routes>
+      {/* Public Routes */}
+      <Route path="/" element={<Home />} />
+      <Route path="/account_request" element={<AccountRequest />} />
+      <Route path="/email_verification" element={<EmailVerification />} />
 
-        {/* 404 Not Found */}
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </Suspense>
+      {/* 404 Not Found */}
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
 }
 
 function ProtectedRoutes() {
-  // const { token } = useContext(StoreContext);
-
-  // if (!token) {
-  //   return (
-  //     <Suspense fallback={<div>Loading...</div>}>
-  //       <Route path="*" element={<NotFound />} />
-  //     </Suspense>
-  //   );
-  // }
-
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <Routes>
-        {/* Routes with Sidebar */}
-        <Route element={<Sidebar />}>
-          {/* Dashboard */}
-          <Route path="/" element={<Dashboard />} />
-          {/* <Route path="/dashboard" element={<Dashboard />} /> */}
+    <Routes>
+      {/* Routes with Sidebar */}
+      <Route element={<Sidebar />}>
+        {/* Dashboard */}
+        <Route path="/" element={
+          <Suspense fallback={<div>Loading Dashboard...</div>}>
+            <Dashboard />
+          </Suspense>
+        } />
 
-          {/* Menu Management */}
-          <Route path="menu/add" element={<Add />} />
-          <Route path="menu/list" element={<List />} />
+        <Route path="/dashboard/user_management" element={
+          <Suspense fallback={<div>Loading User Management...</div>}>
+            <UserManagement />
+          </Suspense>
+        } />
+        
+        
+        {/* Menu Management */}
+        <Route path="menu/add" element={
+          <Suspense fallback={<div>Loading Add Menu...</div>}>
+            <Add />
+          </Suspense>
+        } />
+        <Route path="menu/list" element={
+          <Suspense fallback={<div>Loading List...</div>}>
+            <List />
+          </Suspense>
+        } />
+        <Route path="menu/item_view" element={
+          <Suspense fallback={<div>Loading Item View...</div>}>
+            <ItemView />
+          </Suspense>
+        } />
 
-          {/* Store and Inventory */}
-          <Route path="stock/shopping_list" element={<ShoppingList />} />
-          <Route path="stock/inventory_in_store" element={<Store />} />
-          <Route path="stock/budgets" element={<Budgets />} />
+        {/* Store and Inventory */}
+        <Route path="stock/shopping_list" element={
+          <Suspense fallback={<div>Loading Shopping List...</div>}>
+            <ShoppingList />
+          </Suspense>
+        } />
+        <Route path="stock/inventory_in_store" element={
+          <Suspense fallback={<div>Loading Store...</div>}>
+            <Store />
+          </Suspense>
+        } />
+        <Route path="stock/budgets" element={
+          <Suspense fallback={<div>Loading Budgets...</div>}>
+            <Budgets />
+          </Suspense>
+        } />
 
-          {/* Tenda Express */}
-          <Route path="tenda_express/orders" element={<Orders />} />
-          <Route path="tenda_express/users" element={<Users />} />
-          <Route path="tenda_express/feedbacks" element={<Feedback />} />
-          <Route path="tenda_express/promos" element={<Promos />} />
+        {/* Tenda Express */}
+        <Route path="tenda_express/orders" element={
+          <Suspense fallback={<div>Loading Orders...</div>}>
+            <Orders />
+          </Suspense>
+        } />
+        <Route path="tenda_express/users" element={
+          <Suspense fallback={<div>Loading Users...</div>}>
+            <Users />
+          </Suspense>
+        } />
+        <Route path="tenda_express/feedbacks" element={
+          <Suspense fallback={<div>Loading Feedbacks...</div>}>
+            <Feedback />
+          </Suspense>
+        } />
+        <Route path="tenda_express/promos" element={
+          <Suspense fallback={<div>Loading Promos...</div>}>
+            <Promos />
+          </Suspense>
+        } />
 
-          {/* Sales and Reports */}
-          <Route path="reports" element={<Reports />} />
+        {/* Sales and Reports */}
+        <Route path="reports" element={
+          <Suspense fallback={<div>Loading Reports...</div>}>
+            <Reports />
+          </Suspense>
+        } />
 
-          {/* Settings and Profile */}
-          <Route path="settings" element={<Settings />} />
-          <Route path="profile" element={<Profile />} />
+        {/* Settings and Profile */}
+        <Route path="settings" element={
+          <Suspense fallback={<div>Loading Settings...</div>}>
+            <Settings />
+          </Suspense>
+        } />
+        <Route path="profile" element={
+          <Suspense fallback={<div>Loading Profile...</div>}>
+            <Profile />
+          </Suspense>
+        } />
 
-          {/* 404 Not Found */}
-          <Route path="*" element={<NotFound />} />
-        </Route>
-      </Routes>
-    </Suspense>
+        {/* 404 Not Found */}
+        <Route path="*" element={<NotFound />} />
+      </Route>
+    </Routes>
   );
 }
 
@@ -104,47 +155,6 @@ function App() {
     <>
       {token ? <ProtectedRoutes /> : <PublicRoutes />}
     </>
-    // <Suspense fallback={<div>Loading...</div>}>
-    //   <Routes>
-    //     {/* Public Routes */}
-    //     <Route path="/" element={<Home />} />
-    //     <Route path="/account_request" element={<AccountRequest />} />
-    //     <Route path="/email_verification" element={<EmailVerification />} />
-
-    //     {/* Routes with Sidebar */}
-    //     {token && (
-    //       <Route element={<Sidebar />}>
-    //         {/* Dashboard */}
-    //         <Route path="dashboard" element={<Dashboard />} />
-
-    //         {/* Menu Management */}
-    //         <Route path="menu/add" element={<Add />} />
-    //         <Route path="menu/list" element={<List />} />
-
-    //         {/* Store and Inventory */}
-    //         <Route path="stock/shopping_list" element={<ShoppingList />} />
-    //         <Route path="stock/inventory_in_store" element={<Store />} />
-    //         <Route path="stock/budgets" element={<Budgets />} />
-
-    //         {/* Tenda Express */}
-    //         <Route path="tenda_express/orders" element={<Orders />} />
-    //         <Route path="tenda_express/users" element={<Users />} />
-    //         <Route path="tenda_express/feedbacks" element={<Feedback />} />
-    //         <Route path="tenda_express/promos" element={<Promos />} />
-
-    //         {/* Sales and Reports */}
-    //         <Route path="reports" element={<Reports />} />
-
-    //         {/* Settings and Profile */}
-    //         <Route path="settings" element={<Settings />} />
-    //         <Route path="profile" element={<Profile />} />
-
-    //         {/* 404 Not Found */}
-    //         <Route path="*" element={<NotFound />} />
-    //       </Route>
-    //     )}
-    //   </Routes>
-    // </Suspense>
   );
 }
 

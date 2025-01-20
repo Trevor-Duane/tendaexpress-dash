@@ -1,0 +1,20 @@
+.add-page{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+    background-color: #edd9f9;
+}
+.radio-buttons{
+    display: flex;
+    align-items: center;
+}
+.radio-buttons label{
+    padding-left: 8px;
+    cursor: pointer;
+    margin: 5px 0;
+}
+.radio-buttons input:checked{
+    border-color: #a020f0;
+  background-color: #a020f0;
+}
