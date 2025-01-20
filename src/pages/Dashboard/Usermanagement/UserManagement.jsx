@@ -1,25 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './UserManagement.css'; // Importing the CSS file
+import './UserManagement.css';
+import { toast } from 'react-toastify';
+import { StoreContext } from '../../../Context/StoreContext';
 
 const UserManagement = () => {
-  const [users, setUsers] = useState([]); // Stores all users
-  const [selectedUser, setSelectedUser] = useState(null); // Stores the currently selected user
-  const [name, setName] = useState(''); // Stores user name
-  const [email, setEmail] = useState(''); // Stores user email
-  const [role, setRole] = useState(''); // Stores user role
-  const [loading, setLoading] = useState(false); // Loading state for updates
-  const [error, setError] = useState(''); // Error messages
+  const [users, setUsers] = useState([])
+  const [selectedUser, setSelectedUser] = useState(null); 
+  const [name, setName] = useState(''); 
+  const [loading, setLoading] = useState(null)
+  const [email, setEmail] = useState(''); 
+  const [role, setRole] = useState(''); 
+
+  const { apiUrl } = React.useContext(StoreContext);
 
   // Fetch all users from the API
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/users');
+        const response = await axios.get(`${apiUrl}/api/users`);
         setUsers(response.data.data);
       } catch (err) {
         console.error('Error fetching users:', err.message);
-        setError('Failed to fetch users.');
       }
     };
     fetchUsers();
@@ -36,16 +38,17 @@ const UserManagement = () => {
   // Handle form submission for updating user details
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    setError('');
     try {
-      await axios.put('http://localhost:3000/auth/update_role', {
-        id: selectedUser.id, // Pass the user ID
-        username: name,
+      const response = await axios.post(`${apiUrl}/auth/update_role`, {
         email: email,
         user_role: role,
       });
-
+      if(response.data.success) {
+        toast.success(response.data.message)
+      }
+      else {
+        toast.error(response.data.message)
+      }
       // Update user in the list
       setUsers((prev) =>
         prev.map((user) =>
@@ -55,19 +58,13 @@ const UserManagement = () => {
         )
       );
     } catch (err) {
-      console.error('Error updating user:', err.message);
-      setError('Failed to update user.');
-    } finally {
-      setLoading(false);
-    }
+        toast.error("Error updating user")
+    } 
   };
 
   return (
     <div className="user-container">
       <h2>User Management</h2>
-
-      {/* Error Message */}
-      {error && <p className="error-message">{error}</p>}
 
       {/* User List */}
       <div>
