@@ -16,11 +16,13 @@ import sales_white from './sales_white.png'
 import pending from './pending.png'
 import dish from './dish.png'
 import paid from './paid.png'
+import user from './user.png'
 
 
 
 export const assets = {
     cover,
+    user,
     logo,
     logo2,
     profile_image,

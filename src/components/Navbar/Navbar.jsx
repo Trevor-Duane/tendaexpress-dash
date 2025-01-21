@@ -1,10 +1,15 @@
 import React from "react";
 import "./Navbar.css";
 import { assets } from "../../assets/assets";
+import { StoreContext } from "../../Context/StoreContext";
 import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const [showProfile, setShowProfile] = React.useState(false);
+
+  const { apiUrl, user, logout } = React.useContext(StoreContext);
+  console.log("navbar user", user)
+  
   return (
     <div className="navbar">
       <img className="logo" src={assets.logo} alt="" />
@@ -15,11 +20,11 @@ const Navbar = () => {
         <NavLink to="settings" className="navbar-link">
           <p>Settings</p>
         </NavLink>
-        <img className="notification" src={assets.bell_icon} alt="" />
+        {/* <img className="notification" src={assets.bell_icon} alt="" /> */}
         <img
           onClick={() => setShowProfile((prevState) => !prevState)}
           className="profile"
-          src={assets.profile_image}
+          src={assets.user}
           alt=""
         />
       </div>
@@ -28,11 +33,12 @@ const Navbar = () => {
         ""
       ) : (
         <div className="navbar-profile-details">
+          <p className="profile-user">{user.username}</p>
           <ul>
             <NavLink to="/profile" onClick={() => setShowProfile((prevState) => !prevState)}>
               <li>Profile</li>
             </NavLink>
-            <NavLink onClick={() => setShowProfile((prevState) => !prevState)}>
+            <NavLink onClick={() => logout()}>
               <li>Logout</li>
             </NavLink>
           </ul>

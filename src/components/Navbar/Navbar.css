@@ -18,7 +18,7 @@
 }
 
 .navbar .profile {
-  width: 48px;
+  width: 28px;
   cursor: pointer;
   border-radius: 50%;
   border: 2px solid #fff; /* Profile icon border for clarity */
@@ -55,8 +55,13 @@
   background-color: #1f2126; /* Darker background for profile menu */
   border-radius: 4px;
   transition: 0.5s;
-  top: 7%;
+  top: 80%;
   right: 8px;
+}
+.profile-user{
+  padding: 10px;
+  background-color: #e2c0f8;
+  color: #663399;
 }
 
 .navbar-profile-details ul {
