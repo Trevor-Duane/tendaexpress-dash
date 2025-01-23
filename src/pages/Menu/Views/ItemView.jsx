@@ -38,7 +38,15 @@ const ItemView = () => {
         } else if (activeTab === "recipeCards") {
           const response = await axios.get(`${apiUrl}/api/items`);
           console.log("recipe response", response);
-          setRecipeCards(response.data.data);
+          // Filter items to include only those with a non-empty recipes array
+          const filteredItems = response.data.data.filter(
+            (item) => Array.isArray(item.recipes) && item.recipes.length > 0
+          );
+
+          console.log("Filtered Items with Recipes:", filteredItems);
+
+          // Set the filtered items to state
+          setRecipeCards(filteredItems);
         }
       } catch (error) {
         toast.error(`Error fetching ${activeTab}: ${error.message}`);
@@ -73,28 +81,51 @@ const ItemView = () => {
     <div className="recipe-cards">
       {recipes.map((recipe) => (
         <div key={recipe.id} className="recipe-card">
-          <div>
-            <p>{recipe.item_name}</p>
+          {/* Recipe Name */}
+          <div className="recipe-title">
+            <h3>{recipe.item_name}</h3>
           </div>
+  
+          {/* Recipe Image */}
           <div className="recipe-image-container">
             <img
               src={`${apiUrl}/images/${recipe.item_image}`}
               alt={recipe.item_name}
               onError={(e) => {
-                e.target.onerror = null;
-                e.target.src = "https://via.placeholder.com/150";
+                e.target.onerror = null; // Prevent infinite error loop
+                e.target.src = "https://via.placeholder.com/150"; // Fallback image
               }}
             />
           </div>
-          <ul className="ingredients-list">
-            {recipe.recipes?.map((ingredient, index) => (
-              <li key={index}>{ingredient.uom}</li>
-            ))}
-          </ul>
+  
+          {/* Ingredients Table */}
+          <table className="ingredients-table">
+            <thead>
+              <tr>
+                <th>Recipe Item</th>
+                <th>Grammage</th>
+              </tr>
+            </thead>
+            <tbody>
+              {recipe.recipes.map((ingredient, index) => (
+                <tr key={index}>
+                  <td>
+                    {ingredient.store
+                      ? ingredient.store.item_name
+                      : "No Store Info Available"}
+                  </td>
+                  <td>
+                    {ingredient.usage_amount} {ingredient.uom}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       ))}
     </div>
   );
+  
 
   return (
     <div className="content-page dashboard">

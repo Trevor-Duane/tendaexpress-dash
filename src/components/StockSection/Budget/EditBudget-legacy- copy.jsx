@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from "react";
-import { toast } from "react-toastify";
 import axios from "axios";
 import "./EditBudget.css";
 import {
@@ -24,7 +23,9 @@ const EditBudget = ({ budgetId, onClose }) => {
   useEffect(() => {
     const fetchInventoryItems = async () => {
       try {
-        const response = await axios.get(`${apiUrl}/api/list_shopping_items`);
+        const response = await axios.get(
+          `${apiUrl}/api/list_shopping_items`
+        );
         const items = Array.isArray(response.data.data)
           ? response.data.data
           : [];
@@ -62,7 +63,6 @@ const EditBudget = ({ budgetId, onClose }) => {
     fetchInventoryItems();
     fetchBudgetData();
   }, [budgetId]);
-
 
   const handleItemSelect = (e) => {
     setSelectedItemId(e.target.value);
@@ -116,12 +116,6 @@ const EditBudget = ({ budgetId, onClose }) => {
   };
 
   const removeItemFromBudget = (section, itemId) => {
-    //store the section and Ids of the removed items for later use
-    const removedItem = { section, itemId };
-
-    console.log("removed item", removedItem)
-
-    //updated the selected item state by removing the deleted items
     setSelectedItems((prev) => {
       const sectionItems = prev[section].filter((item) => item.id !== itemId);
       return {
@@ -130,34 +124,11 @@ const EditBudget = ({ budgetId, onClose }) => {
       };
     });
 
-    deleteItemFromBudgetDetails(removedItem);
     // Recalculate totals after removing the item
-
     calculateTotals({
       ...selectedItems,
       [section]: selectedItems[section].filter((item) => item.id !== itemId),
     });
-
-    
-  };
-
-  // Function to handle deletion from the budget details table
-  const deleteItemFromBudgetDetails = ({ section, itemId }) => {
-        try {
-          const response = axios.post(`${apiUrl}/api/remove_detail_item`, {
-            section,
-            itemId,
-          })
-          if(response.success){
-            toast.success(response.message)
-          }
-          else {
-            toast.error(response.message)
-          }
-        } catch (error) {
-          toast.error(response.message)
-        }
-  
   };
 
   const updateItemQuantity = (section, itemId, newQuantity) => {
@@ -339,8 +310,7 @@ const EditBudget = ({ budgetId, onClose }) => {
                 <strong>Total: </strong>{" "}
                 {totals[section]?.total
                   ? totals[section].total.toLocaleString()
-                  : 0}
-                /=
+                  : 0}/=
               </div>
             </div>
           ))

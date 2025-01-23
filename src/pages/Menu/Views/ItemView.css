@@ -75,7 +75,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    justify-content: center;
+    justify-content: flex-start;
   }
   .recipe-image-container {
     width: 100%; /* Or set a fixed width */
@@ -90,36 +90,41 @@
   
   .recipe-image-container img {
     max-width: 100%;
+    padding: 10px;
     max-height: 100%;
     object-fit: cover; /* Ensures the image fills the container while maintaining its aspect ratio */
   }
   
   .recipe-card {
-    background-color: #1a1a1a;
-    border: 1px solid #663399;
-    border-radius: 10px;
-    padding: 15px;
-    width: 250px;
-    text-align: center;
-    color: white;
-  }
-  
-  .recipe-image {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    color: #1a1a1a;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
   
   .recipe-title {
     font-size: 18px;
+    text-align: center;
     margin-bottom: 10px;
   }
   
-  .ingredients-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  .ingredients-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  .ingredients-table th,
+  .ingredients-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
     text-align: left;
+  }
+  
+  .ingredients-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
   }
   

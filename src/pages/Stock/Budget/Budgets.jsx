@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 import DataTable from "react-data-table-component";
 import { customStyles } from "../../../styles/tableStyles";
 import CreateBudget from "../../../components/StockSection/Budget/CreateBudget";
@@ -82,6 +83,11 @@ const Budgets = () => {
     loadBudgets(); // Refetch the data based on the active tab
   };
 
+  const handleReload = () => {
+    loadBudgets();
+    toast.info("Budgets List Reloaded.");
+  };
+
   // Define columns for the DataTable
   const columns = [
     { name: "Budget Head", selector: (row) => row.budget_head, sortable: true },
@@ -113,8 +119,8 @@ const Budgets = () => {
         </button>
       ),
       ignoreRowClick: true,
-      allowOverflow: true,
-      button: true,
+      // allowOverflow: true,
+      // button: true,
     },
   ];
 
@@ -185,9 +191,9 @@ const Budgets = () => {
               <InputButtonOutline onClick={() => setIsCreateModalOpen(true)}>
                 New Budget
               </InputButtonOutline>
-              {/* <InputButton onClick={() => setIsAddendumModalOpen(true)}>
-                Add Addendum
-              </InputButton> */}
+              <InputButton onClick={() => handleReload()}>
+                Refresh List
+              </InputButton>
               </div>
             </div>
 

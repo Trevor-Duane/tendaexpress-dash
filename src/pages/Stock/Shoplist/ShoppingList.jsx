@@ -121,7 +121,7 @@ const ShoppingList = () => {
         </button>
       ),
       ignoreRowClick: true,
-      allowOverflow: true,
+      // allowOverflow: true,
       button: true,
     },
   ];

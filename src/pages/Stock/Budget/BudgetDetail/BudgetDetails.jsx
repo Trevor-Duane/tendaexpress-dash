@@ -134,12 +134,12 @@ const BudgetDetails = ({ budget, goBack }) => {
       <div className="content-page">
         <div className="budget-details-header">
           <div className="budget-details-details">
-            <h2>
-              Budget Total: {budget.budget_total.toLocaleString("en-US")}/=
-            </h2>
-            <h2>
-              Status: <span className={`status-${status}`}>{status}</span>
-            </h2>
+            <p>
+              Budget Total: <span className="budget-detail-total">{budget.budget_total.toLocaleString("en-US")}/=</span>
+            </p>
+            <p>
+              Status: <span className={`status-${status} budget-detail-status`}>{status}</span>
+            </p>
           </div>
           <div className="budget_details_buttons">
             <div>
@@ -153,10 +153,11 @@ const BudgetDetails = ({ budget, goBack }) => {
                   Change Budget Status
                 </option>
                 {/* Conditionally render options based on user permissions */}
-                {user.permissions.includes("acknowledge_budget_reciept") && (
+                {/* {user.permissions.includes("acknowledge_budget_reciept") && (
                   <option value="Recieved">Acknowledge Receipt</option>
-                )}
-                {/* <option value="received">Acknowledge Receipt</option>  */}
+                )} */}
+                <option value="New">New budget</option> 
+                <option value="Recieved">Acknowledge Receipt</option> 
                 <option value="Accepted">Accept Budget</option>
                 <option value="Rejected">Reject Budget</option>
                 <option value="Approved">Approve Budget</option>
