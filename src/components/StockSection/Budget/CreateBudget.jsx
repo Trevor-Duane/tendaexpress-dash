@@ -234,7 +234,7 @@ const CreateBudget = ({ onClose }) => {
             <option value="">Select an item</option>
             {inventoryItems.map((item) => (
               <option key={item.id} value={item.id}>
-                {item.item_name} - {item.unit_price}/=
+                {item.item_name} - {item.uom} @ {item.unit_price}/=
               </option>
             ))}
           </select>

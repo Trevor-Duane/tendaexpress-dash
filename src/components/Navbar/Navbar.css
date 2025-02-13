@@ -1,8 +1,8 @@
 .navbar {
   display: flex;
   justify-content: space-between;
-  background-color: #2c2f36; /* Darker background color for a dark theme */
-  color: white; /* White text for contrast */
+  background-color: #2c2f36;
+  color: white;
   align-items: center;
   padding: 8px 20px;
   z-index: 999;
@@ -12,71 +12,102 @@
   width: 100%;
   height: 60px;
 }
-
-.navbar .logo {
+.navbar-logo {
   width: max(10%, 80px);
 }
-
-.navbar .profile {
-  width: 28px;
-  cursor: pointer;
-  border-radius: 50%;
-  border: 2px solid #fff; /* Profile icon border for clarity */
-}
-
-.navbar .notification {
-  width: 24px;
-  cursor: pointer;
-}
-
 .navbar-right {
   display: flex;
   align-items: center;
   gap: 20px;
 }
-
-.navbar-right p {
+.navbar-settings,
+.navbar-notification {
+  background-color: none;
+  display: flex;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  justify-content: center;
   cursor: pointer;
+}
+.navbar-settings:hover,
+.navbar-notification:hover {
+  background-color: #663399;
+  display: flex;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  justify-content: center;
+  cursor: pointer;
+}
+.settings-icon,.notification-icon  {
+  padding: 2px;
+}
+.navbar-user-info {
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 200px;
+  max-width: 300px;
+  padding: 6px 10px;
+  border-radius: 25px;
+}
+.navbar-user-info:hover {
+  background-color: #663399;
+}
+.navbar-profile-dp {
+  width: 28px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.navbar-profile-email {
+  display: inline-block;
+  max-width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.navbar-user-info p {
   color: white;
   font-weight: 500;
   transition: color 0.3s ease;
 }
-
-.navbar-right p:hover {
-  color: #a020f0; /* Hover effect with purple color */
+.navbar-user-info:hover {
+  color: #a020f0;
 }
-
 .navbar-link.active {
   color: #a020f0;
 }
-
 .navbar-profile-details {
   position: absolute;
-  background-color: #1f2126; /* Darker background for profile menu */
-  border-radius: 4px;
+  background-color: #1f2126;
+  border-radius: 8px;
   transition: 0.5s;
-  top: 80%;
-  right: 8px;
+  width: 200px;
+  top: 93%;
+  right: 20px;
 }
-.profile-user{
-  padding: 10px;
-  background-color: #e2c0f8;
-  color: #663399;
-}
-
 .navbar-profile-details ul {
   list-style: none;
 }
 
 .navbar-profile-details ul li {
-  padding: 10px 12px;
+  padding: 10px 5px;
+  margin: 2px 2px;
+  display: flex;
+  gap: 4px;
   color: white;
-  border-bottom: 1px solid #a020f0;
+  border-radius: 4px;
   transition: background-color 0.3s ease;
 }
 
 .navbar-profile-details ul li:hover {
-  background-color: #a020f0; /* Hover effect for profile options */
+  background-color: #a020f0;
+  border-radius: 4px;
+
   color: white;
 }
 

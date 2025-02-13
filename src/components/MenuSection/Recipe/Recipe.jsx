@@ -15,8 +15,14 @@ const Recipe = () => {
     { id: 3, value: 'wings' },
     { id: 4, value: 'spoons' },
     { id: 5, value: 'scoopes' },
-    { id: 6, value: 'count' },
+    { id: 6, value: 'piece' },
     { id: 7, value: 'portions' },
+    { id: 8, value: 'scoope' },
+    { id: 9, value: 'egg' },
+    { id: 10, value: 'portion' },
+     { id: 11, value: 'sausage' },
+      { id: 12, value: 'sausages' },
+       { id: 13, value: 'eggs' },
   ]
 
   const [data, setData] = useState({

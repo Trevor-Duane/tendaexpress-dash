@@ -17,12 +17,17 @@ import pending from './pending.png'
 import dish from './dish.png'
 import paid from './paid.png'
 import user from './user.png'
+import user2 from './user2.png'
+import reset from './reset-password.png'
+import logout from './logout.png'
+import down from './down.png'
 
 
 
 export const assets = {
     cover,
     user,
+    down,
     logo,
     logo2,
     profile_image,
@@ -39,5 +44,8 @@ export const assets = {
     sales_white,
     pending,
     paid,
-    dish
+    dish,
+    logout,
+    user2,
+    reset
 }

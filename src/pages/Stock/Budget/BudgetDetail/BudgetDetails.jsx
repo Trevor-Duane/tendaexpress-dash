@@ -10,6 +10,7 @@ import {
 } from "../../../../components/Form/FormComponents";
 import "./BudgetDetails.css";
 import { StoreContext } from "../../../../Context/StoreContext";
+import { exportToPDF } from "../../../../service/ExportService";
 
 const BudgetDetails = ({ budget, goBack }) => {
   const MySwal = withReactContent(Swal);
@@ -165,6 +166,9 @@ const BudgetDetails = ({ budget, goBack }) => {
             </div>
             <div>
               <InputButton onClick={goBack}>Go Back</InputButton>
+            </div>
+            <div>
+              <InputButtonOutline onClick={() => exportToPDF(budget.id, apiUrl)}>PDF</InputButtonOutline>
             </div>
           </div>
         </div>

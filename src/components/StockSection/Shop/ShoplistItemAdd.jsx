@@ -19,7 +19,7 @@ const ShoplistItemAdd = ({ onClose, refetchShopItems }) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: name === 'item_name' ? value.toUpperCase() : value,
+      [name]: value,
     });
   };
 
@@ -82,7 +82,6 @@ const ShoplistItemAdd = ({ onClose, refetchShopItems }) => {
           <div className="shoplistFormCol">
             <InputField
               type="text"
-              x
               placeholder="Unit Price"
               id="iprice"
               name="unit_price"
