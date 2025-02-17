@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
+import { assets } from "../../../assets/assets";
 import { toast } from "react-toastify";
 import DataTable from "react-data-table-component";
 import { customStyles } from "../../../styles/tableStyles";
@@ -88,6 +89,15 @@ const Budgets = () => {
     toast.info("Budgets List Reloaded.");
   };
 
+  const shareCurrentBudget = async (budget_id)=> {
+    try {
+     const shareResponse = await axios.post(`${apiUrl}/api/share_budget`, {budget_id})
+     toast.info("Budget Shared Successfully");
+    } catch (error) {
+      console.error("Error sharing budget:", error);
+    }
+  }
+
   // Define columns for the DataTable
   const columns = [
     { name: "Budget Head", selector: (row) => row.budget_head, sortable: true },
@@ -107,7 +117,8 @@ const Budgets = () => {
     {
       name: "Actions",
       cell: (row) => (
-        <button
+        <div className="budget-actions-buttons">
+          <button
           className="budget-edit-button"
           onClick={(e) => {
             e.stopPropagation(); // Prevents the row click from firing
@@ -115,8 +126,21 @@ const Budgets = () => {
             setIsBudgetEditModalOpen(true);
           }}
         >
-          Edit
+          <img src={assets.editt} alt=""/>
+          {/* Edit */}
         </button>
+
+        <button
+          className="budget-edit-button"
+          onClick={(e) => {
+            e.stopPropagation();
+            shareCurrentBudget(row.id)
+          }}
+        >
+          <img src={assets.network} alt=""/>
+        </button>
+        </div>
+        
       ),
       ignoreRowClick: true,
       // allowOverflow: true,

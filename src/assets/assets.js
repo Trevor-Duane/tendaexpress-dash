@@ -21,6 +21,8 @@ import user2 from './user2.png'
 import reset from './reset-password.png'
 import logout from './logout.png'
 import down from './down.png'
+import network from './network.png'
+import editt from './editt.png'
 
 
 
@@ -47,5 +49,7 @@ export const assets = {
     dish,
     logout,
     user2,
-    reset
+    reset,
+    editt,
+    network
 }

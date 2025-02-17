@@ -10,9 +10,14 @@
   font-size: 20px !important;
   color: #2b2828;
 }
+.budget-actions-buttons{
+  display: flex;
+  gap: 10px;
+}
 .budget-edit-button{
   padding: 2px 12px;
-  border: 1px solid #e2c0f8;
+  background-color: #fff;
+  border: 1px solid #fff;
 }
 .budget-edit-button:hover{
   padding: 2px 12px;
