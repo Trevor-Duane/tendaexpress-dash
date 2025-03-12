@@ -99,7 +99,7 @@ const Dashboard = () => {
             <p>Sort by Newest</p>
           </div>
 
-          {topSelling.map((item) => (
+          {topSelling?.map((item) => (
             <div className="current-order-container" key={item.id}>
               <div className="flex-container-1">
                 <div>
@@ -116,18 +116,6 @@ const Dashboard = () => {
                   <p>Total Sales: Shs. {item.total_sales.toLocaleString()}</p>
                 </div>
               </div>
-              {/* <div className="flex-container-3">
-                <div>
-                  <span className="flex-container-span">
-                    <p>Paid</p>
-                    <img src={assets.paid} alt="" height={18} width={18} />
-                  </span>
-                  <p>momo</p>
-                </div>
-              </div>
-              <div className="flex-container-4">
-                <button>Order Status</button>
-              </div> */}
             </div>
           ))}
 
