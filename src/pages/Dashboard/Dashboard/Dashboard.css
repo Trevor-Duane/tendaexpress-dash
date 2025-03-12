@@ -13,7 +13,7 @@
 .top-row{
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
-    grid-template-rows: 250px;
+    grid-template-rows: 300px;
     column-gap: 20px;
 }
 /* .grid-column{
@@ -21,7 +21,6 @@
 } */
 .left-column{
     display: grid;
-    grid-template-columns: auto auto;
     grid-template-columns: auto auto;
     gap: 10px;
 }

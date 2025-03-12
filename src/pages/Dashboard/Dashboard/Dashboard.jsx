@@ -1,10 +1,24 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
+import { StoreContext } from "../../../Context/StoreContext";
 import { ToastContainer } from "react-toastify";
+import SalesLineChart from "../../../components/Graphs/SalesLineChart";
 import "react-toastify/dist/ReactToastify.css";
 import "./Dashboard.css";
 import { assets } from "../../../assets/assets";
 
 const Dashboard = () => {
+
+  const { apiUrl } = React.useContext(StoreContext);
+
+  const [salesData, setSalesData] = useState([]);
+
+  useEffect(() => {
+    fetch(`${apiUrl}/api/daily_sales`) // Adjust the API URL
+      .then((response) => response.json())
+      .then((data) => setSalesData(data))
+      .catch((error) => console.error("Error fetching sales data:", error));
+  }, []);
+
   const today = new Date();
   const formattedDate = today.toLocaleDateString("en-US", {
     weekday: "long",
@@ -44,7 +58,7 @@ const Dashboard = () => {
               <h4 className="bold-para">Daily Sales</h4>
             </div>
             <div>
-              <p>graph 1</p>
+            <SalesLineChart data={salesData} />
             </div>
           </div>
           <div className="right-column grid-column">
