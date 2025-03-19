@@ -32,9 +32,13 @@ const SalesAreaChart = ({ data }) => {
           fill="#663399" 
           fillOpacity={0.3} 
           strokeWidth={2}
-          dot={(props) =>
-            props.index === data.length - 1 ? <BlinkingDot {...props} /> : <Dot {...props} fill="#8884d8" />
-          }
+          dot={(props) => {
+            const { key, ...restProps } = props; // Extract key
+            return props.index === data.length - 1 
+              ? <BlinkingDot key={key} {...restProps} />
+              : <Dot key={key} {...restProps} fill="#8884d8" />;
+          }}
+          
         />
       </AreaChart>
     </ResponsiveContainer>

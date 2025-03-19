@@ -9,7 +9,7 @@ import ErrorBoundary from "./ErrorBoundary.jsx";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <StoreContextProvider>
-      <BrowserRouter>
+      <BrowserRouter future={{ v7_relativeSplatPath: true, v7_startTransition: true }}>
         <ErrorBoundary>
           <App />
         </ErrorBoundary>

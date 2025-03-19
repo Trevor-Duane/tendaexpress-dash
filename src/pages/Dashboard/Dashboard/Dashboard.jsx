@@ -99,8 +99,8 @@ const Dashboard = () => {
             <p>Sort by Newest</p>
           </div>
 
-          {topSelling?.map((item) => (
-            <div className="current-order-container" key={item.id}>
+          {topSelling?.map((item, index) => (
+            <div className="current-order-container" key={item.id || index}>
               <div className="flex-container-1">
                 <div>
                   <img src={assets.dish} height="60px" width="60px" alt="" />
