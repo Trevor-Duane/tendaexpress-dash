@@ -130,6 +130,23 @@ const CreateBudget = ({ onClose }) => {
     calculateTotals(selectedItems);
   };
 
+  const updateItemSubtotal = (section, itemId, newSubtotal) => {
+    setSelectedItems((prev) => {
+      const sectionItems = prev[section].map((item) => {
+        if (item.id === itemId) {
+          const quantity = newSubtotal / item.unit_price;
+          return { ...item, quantity, subtotal: newSubtotal };
+        }
+        return item;
+      });
+      return {
+        ...prev,
+        [section]: sectionItems,
+      };
+    });
+    calculateTotals(selectedItems);
+  };
+
   const handleSubmitBudget = async () => {
     //first check if there are any selected items
     if (Object.keys(selectedItems).length === 0) {
@@ -293,7 +310,18 @@ const CreateBudget = ({ onClose }) => {
                           }
                         />
                       </td>
-                      <td>{(item.unit_price * item.quantity).toFixed(2)}/=</td>
+                      {/* <td>{(item.unit_price * item.quantity).toFixed(2)}/=</td> */}
+                      <td>
+                        <InputField
+                          type="number"
+                          min="0"
+                          value={item.unit_price * item.quantity}
+                          onChange={(e) =>
+                            updateItemSubtotal(section, item.id, parseFloat(e.target.value))
+                          }
+                          placeholder="Enter subtotal"
+                        />
+                      </td>
                       <td>
                         <InputButton
                           onClick={() => removeItemFromBudget(section, item.id)}

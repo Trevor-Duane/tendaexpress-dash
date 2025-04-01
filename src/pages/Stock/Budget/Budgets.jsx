@@ -13,6 +13,7 @@ import {
   InputField,
 } from "../../../components/Form/FormComponents";
 import "./Budget.css";
+import ShareBudget from "../../../components/StockSection/Budget/ShareBudget";
 import EditBudget from "../../../components/StockSection/Budget/EditBudget";
 import CreateAddendum from "../../../components/StockSection/Addendum/CreateAddendum";
 
@@ -22,6 +23,7 @@ const Budgets = () => {
   const [dataFiltered, setDataFiltered] = useState([]);
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [isBudgetEditModalOpen, setIsBudgetEditModalOpen] = useState(false);
+  const [isShareBudgetModalOpen, setIsShareBudgetModalOpen] = useState(false);
   const [isAddendumModalOpen, setIsAddendumModalOpen] = useState(false);
   const [selectedBudget, setSelectedBudget] = useState(null);
   const [currentBudget, setCurrentBudget] = useState(null);
@@ -134,11 +136,22 @@ const Budgets = () => {
           className="budget-edit-button"
           onClick={(e) => {
             e.stopPropagation();
-            shareCurrentBudget(row.id)
+            setCurrentBudget(row.id);
+            setIsShareBudgetModalOpen(true);
           }}
         >
           <img src={assets.network} alt=""/>
         </button>
+
+        {/* <button
+          className="budget-edit-button"
+          onClick={(e) => {
+            e.stopPropagation();
+            shareCurrentBudget(row.id)
+          }}
+        >
+          <img src={assets.network} alt=""/>
+        </button> */}
         </div>
         
       ),
@@ -255,6 +268,16 @@ const Budgets = () => {
                 <CreateAddendum
                   budgetId={currentBudget}
                   onClose={() => setIsAddendumModalOpen(false)}
+                />
+              </div>
+            )}
+
+            {/* Modal for sharing Budget */}
+            {isShareBudgetModalOpen && (
+              <div className="budget-modal" ref={modalRef}>
+                <ShareBudget
+                  budgetId={currentBudget}
+                  onClose={() => setIsShareBudgetModalOpen(false)}
                 />
               </div>
             )}

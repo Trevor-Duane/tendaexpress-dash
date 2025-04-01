@@ -5,6 +5,7 @@ import SalesLineChart from "../../../components/Graphs/SalesLineChart";
 import "react-toastify/dist/ReactToastify.css";
 import "./Dashboard.css";
 import { assets } from "../../../assets/assets";
+import SalesBarChart from "../../../components/Graphs/SalesBarChart";
 
 const Dashboard = () => {
 
@@ -75,7 +76,7 @@ const Dashboard = () => {
           </div>
           <div className="middle-column grid-column">
             <div>
-              <h4 className="bold-para">Daily Sales</h4>
+              <h4 className="bold-para">Sales Line Graph</h4>
             </div>
             <div>
               <SalesLineChart data={salesData} />
@@ -83,10 +84,10 @@ const Dashboard = () => {
           </div>
           <div className="right-column grid-column">
             <div className="pie">
-              <h4 className="bold-para">Total Income</h4>
+              <h4 className="bold-para">Sales Bars</h4>
             </div>
             <div>
-              <p>graph 2</p>
+              <SalesBarChart data={salesData} />
             </div>
           </div>
         </div>
