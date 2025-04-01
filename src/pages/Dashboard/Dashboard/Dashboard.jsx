@@ -6,6 +6,8 @@ import "react-toastify/dist/ReactToastify.css";
 import "./Dashboard.css";
 import { assets } from "../../../assets/assets";
 import SalesBarChart from "../../../components/Graphs/SalesBarChart";
+import StockTable from "../../../components/Tables/StockTable";
+import Table from "../../../components/Tables/Table";
 
 const Dashboard = () => {
 
@@ -14,21 +16,26 @@ const Dashboard = () => {
   const [salesData, setSalesData] = useState([]);
   const [totalRevenue, setTotalRevenue] = useState(0);
   const [topSelling, setTopSelling] = useState([]);
+  const [stockItems, setStockItems] = useState([]);
   const [totalOrders, setTotalOrders] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [salesRes, revenueRes, topSellingRes, ordersRes] = await Promise.all([
+        const [salesRes, revenueRes, topSellingRes, ordersRes, stockLevels] = await Promise.all([
           fetch(`${apiUrl}/api/daily_sales`).then(res => res.json()),
           fetch(`${apiUrl}/api/total_revenue`).then(res => res.json()),
           fetch(`${apiUrl}/api/top_selling`).then(res => res.json()),
-          fetch(`${apiUrl}/api/total_orders`).then(res => res.json())
+          fetch(`${apiUrl}/api/total_orders`).then(res => res.json()),
+          fetch(`https://api.tendaafrica.net/api/stock_levels`).then(res => res.json())
         ]);
 
         console.log("top orders", topSellingRes)
+        console.log("top orders", topSellingRes)
+        console.log("daily sales", salesRes)
 
         setSalesData(salesRes);
+        setStockItems(stockLevels.data)
         setTotalRevenue(revenueRes.total_revenue);
         setTopSelling(topSellingRes);
         setTotalOrders(ordersRes?.data?.length || 0);
@@ -40,6 +47,7 @@ const Dashboard = () => {
     fetchData();
   }, []);
 
+
   const today = new Date();
   const formattedDate = today.toLocaleDateString("en-US", {
     weekday: "long",
@@ -50,10 +58,10 @@ const Dashboard = () => {
 
   return (
     <div className="content-page dashboard">
-      <div className="dashboard-header">
+      {/* <div className="dashboard-header">
         <h4 className="dashboard-head">Simple is better</h4>
         <p className="dashboard-date">{formattedDate}</p>
-      </div>
+      </div> */}
       <section>
         <div className="top-row">
           <div className="left-column grid-column">
@@ -93,24 +101,26 @@ const Dashboard = () => {
         </div>
       </section>
 
+      <section className="stock-levels-section">
+        <h4 className="bold-para">Stock Levels</h4>
+        <div className="stock-levels">
+          {(stockItems.filter(item => item.max_portions !== null && item.max_portions !== undefined)).map((item, index) => (
+            <div key={index} className="stock-level-item">
+              <p className="card-title"><strong>{item.item_name}</strong></p>
+              <p>{item.max_portions ?? "cant be prepared"} Preparations</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
       <section>
         <div className="current-orders">
           <div className="current-orders-header">
-            <h4 className="bold-para">Current Orders</h4>
-            <p>Sort by Newest</p>
+            <h4 className="bold-para">Top Selling</h4>
           </div>
 
           {topSelling?.map((item, index) => (
             <div className="current-order-container" key={item.id || index}>
-              <div className="flex-container-1">
-                <div>
-                  <img src={assets.dish} height="60px" width="60px" alt="" />
-                </div>
-                <div>
-                  <p>Order #63563356</p>
-                  <p>{formattedDate}</p>
-                </div>
-              </div>
               <div className="flex-container-2">
                 <div>
                   <p>{item.item_name}</p>
@@ -119,42 +129,6 @@ const Dashboard = () => {
               </div>
             </div>
           ))}
-
-
-          {/* <div className="current-order-container">
-            <div className="flex-container-1">
-              <div>
-                <img
-                  src={assets.dish}
-                  height="60px"
-                  width="60px"
-                  alt=""
-                />
-              </div>
-              <div>
-                <p>Order #63563356</p>
-                <p>{formattedDate}</p>
-              </div>
-            </div>
-            <div className="flex-container-2">
-              <div>
-                <p>John Doe</p>
-                <p>Total Amount: Shs.43000</p>
-              </div>
-            </div>
-            <div className="flex-container-3">
-              <div>
-                <span className="flex-container-span">
-                  <p>Pending</p>
-                  <img src={assets.pending} alt="" height={18} width={18} />
-                </span>
-                <p>visa</p>
-              </div>
-            </div>
-            <div className="flex-container-4">
-              <button>Order Status</button>
-            </div>
-          </div> */}
         </div>
       </section>
     </div>

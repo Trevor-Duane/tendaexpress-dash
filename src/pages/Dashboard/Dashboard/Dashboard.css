@@ -25,11 +25,11 @@
     gap: 10px;
 }
 .bold-para{
-    font-size: 1.4rem;
+    font-size: 1.2rem !important;
     margin-bottom: 2rem;
     font-weight: bold;
 }
-.inner-grid-column{
+/* .inner-grid-column{
     border-radius: 6px;
     display: flex;
     flex-direction: column;
@@ -38,7 +38,24 @@
     justify-content: center;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 
-}
+} */
+.inner-grid-column {
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease; /* Adding filter transition for brightness effect */
+  }
+  
+  .inner-grid-column:hover {
+    transform: translateY(-10px) scale(1.05); /* Slight upward movement and scaling effect */
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 24px 0px, rgba(0, 0, 0, 0.1) 0px 0px 0px 1px; /* Stronger shadow effect */
+    filter: brightness(1.1); /* Slight brightness increase for hover effect */
+  }
+  
 .middle-column{
     border-radius: 6px;
     padding: 1rem 1rem;
@@ -118,3 +135,30 @@
     font-size: 14px;
     border-radius: 4px;
 }
+.stock-levels-section{
+    height: fit-content;
+    margin: 15px 0px;
+    padding: 10px;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+.stock-levels{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+}
+.stock-level-item {
+    background-color: #e2c0f8;
+    color: #663399;
+    padding: 20px;
+    border-radius: 6px;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for transform and box-shadow */
+  }
+  
+  .stock-level-item:hover {
+    transform: scale(1.1); /* Zoom-in effect */
+    box-shadow: rgba(9, 30, 66, 0.5) 0px 10px 15px; /* Enhanced shadow on hover */
+  }
+  
